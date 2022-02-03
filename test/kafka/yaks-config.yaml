@@ -36,3 +36,10 @@ pre:
     run: |
       kubectl apply -f ../../kafka-source.kamelet.yaml -n $YAKS_NAMESPACE
       kubectl apply -f ../../kafka-sink.kamelet.yaml -n $YAKS_NAMESPACE
+post:
+  - name: dump
+    if: env:CI=true
+    run: |
+      kamel dump -n $YAKS_NAMESPACE $(basename `pwd`)-dump.log
+      mkdir -p /tmp/dumps
+      cp *-dump.log /tmp/dumps
