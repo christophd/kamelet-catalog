@@ -40,6 +40,6 @@ post:
   - name: dump
     if: env:CI=true
     run: |
-      kamel dump -n $YAKS_NAMESPACE $(basename `pwd`)-dump.log
+      kamel dump --logLines 1000 -n $YAKS_NAMESPACE $(basename `pwd`)-dump.log
       mkdir -p /tmp/dumps
       cp *-dump.log /tmp/dumps
