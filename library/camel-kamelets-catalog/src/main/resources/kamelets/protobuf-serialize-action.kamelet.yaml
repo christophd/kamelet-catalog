@@ -30,7 +30,7 @@ spec:
   template:
     beans:
       - name: schemaResolver
-        type: "#class:org.apache.camel.kamelets.utils.format.converter.protobuf.ProtobufSchemaResolver"
+        type: "#class:org.apache.camel.component.jackson.protobuf.transform.ProtobufSchemaResolver"
         property:
           - key: schema
             value: '{{schema:}}'
@@ -42,6 +42,6 @@ spec:
             library: Jackson
             unmarshalType: com.fasterxml.jackson.databind.JsonNode
             schemaResolver: "#bean:{{schemaResolver}}"
-      - set-header:
+      - setHeader:
           name: "Content-Type"
           constant: "application/protobuf"
