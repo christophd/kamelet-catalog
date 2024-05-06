@@ -1,0 +1,29 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <servers>
+    <server>
+      <id>minio-maven-repository</id>
+      <username>minioadmin</username>
+      <password>minioadmin</password>
+      <configuration>
+        <endpoint>http://dockerhost:9000</endpoint>
+        <pathStyleEnabled>true</pathStyleEnabled>
+      </configuration>
+    </server>
+  </servers>
+
+  <profiles>
+    <profile>
+      <id>minio</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <repositories>
+        <repository>
+          <id>minio-maven-repository</id>
+          <name>Minio Maven Repository</name>
+          <url>s3://camel-k</url>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+</settings>
