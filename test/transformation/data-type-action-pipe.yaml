@@ -1,8 +1,11 @@
 apiVersion: camel.apache.org/v1
 kind: Pipe
 metadata:
-  name: extract-field-action-pipe
+  name: data-type-action-pipe
 spec:
+  integration:
+    dependencies:
+    - "camel:cloudevents"
   source:
     ref:
       kind: Kamelet
@@ -17,8 +20,15 @@ spec:
     - ref:
         kind: Kamelet
         apiVersion: camel.apache.org/v1
-        name: extract-field-action
+        name: data-type-action
       properties:
-        field: ${field}
+        scheme: "http"
+        format: "application-cloudevents"
+    - ref:
+        kind: Kamelet
+        apiVersion: camel.apache.org/v1
+        name: log-action
+      properties:
+        showHeaders: true
   sink:
     uri: yaks:resolveURL('test-service')/result

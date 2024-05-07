@@ -31,6 +31,7 @@
 * xref:ROOT:cassandra-source.adoc[image:kamelets/cassandra-source.svg[] Cassandra Source]
 * xref:ROOT:ceph-sink.adoc[image:kamelets/ceph-sink.svg[] Ceph Sink]
 * xref:ROOT:ceph-source.adoc[image:kamelets/ceph-source.svg[] Ceph Source]
+* xref:ROOT:data-type-action.adoc[image:kamelets/data-type-action.svg[] Data Type Action]
 * xref:ROOT:drop-header-action.adoc[image:kamelets/drop-header-action.svg[] Drop Header Action]
 * xref:ROOT:drop-headers-action.adoc[image:kamelets/drop-headers-action.svg[] Drop Headers Action]
 * xref:ROOT:elasticsearch-index-sink.adoc[image:kamelets/elasticsearch-index-sink.svg[] ElasticSearch Index Sink]

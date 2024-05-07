@@ -34,6 +34,7 @@ NOTE: Fields marked with an asterisk ({empty}*) are mandatory.
 
 At runtime, the `aws-ddb-streams-source` Kamelet relies upon the presence of the following dependencies:
 
+- mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
 - camel:gson
 - camel:aws2-ddb
 - camel:kamelet 
