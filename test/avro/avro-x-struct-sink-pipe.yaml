@@ -1,0 +1,43 @@
+apiVersion: camel.apache.org/v1
+kind: Pipe
+metadata:
+  name: avro-x-struct-sink-pipe
+spec:
+  integration:
+    dependencies:
+    - "camel:jackson-avro"
+  source:
+    ref:
+      kind: Kamelet
+      apiVersion: camel.apache.org/v1
+      name: webhook-source
+    properties:
+      subpath: user
+  steps:
+    - ref:
+        kind: Kamelet
+        apiVersion: camel.apache.org/v1
+        name: data-type-action
+      properties:
+        format: "application-octet-stream"
+    - ref:
+        kind: Kamelet
+        apiVersion: camel.apache.org/v1
+        name: resolve-pojo-schema-action
+      properties:
+        mimeType: "avro/binary"
+        schema: >
+          { "name": "User", "type": "record", "namespace": "demo.kamelets", "fields": [{ "name": "id", "type": "string" }, { "name": "firstname", "type": "string" }, { "name": "lastname", "type": "string" }, { "name": "age", "type": "int" }] }
+    - ref:
+        kind: Kamelet
+        apiVersion: camel.apache.org/v1
+        name: data-type-action
+      properties:
+        format: "avro-x-struct"
+  sink:
+    ref:
+      kind: Kamelet
+      apiVersion: camel.apache.org/v1
+      name: log-action
+    properties:
+      showHeaders: true
