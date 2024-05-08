@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "url": "yaks:resolveURL('slack-service')",
+  "team": "Camel Workspace",
+  "user": "camel",
+  "team_id": "T12345678",
+  "user_id": "W12345678"
+}

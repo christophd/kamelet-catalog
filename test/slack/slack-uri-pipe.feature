@@ -1,4 +1,4 @@
-Feature: Slack Kamelet - property based configuration
+Feature: Slack Kamelet - URI binding
 
   Background:
     Given variables
@@ -13,12 +13,7 @@ Feature: Slack Kamelet - property based configuration
 
   Scenario: Verify Slack events
     # Create binding
-    Given Camel K integration property file slack-credentials.properties
-    Given create Camel K integration slack-to-log-prop-based.groovy
-    """
-    from("kamelet:slack-source/slack-credentials")
-      .to("log:info")
-    """
+    Given load Pipe slack-uri-pipe.yaml
     # Verify authentication test
     Given expect HTTP request header: Authorization="Bearer ${slack.token}"
     Given expect HTTP request header: Content-Type="application/x-www-form-urlencoded"
@@ -36,11 +31,9 @@ Feature: Slack Kamelet - property based configuration
     Then HTTP response body: yaks:readFile('slack-conversations-history.json')
     Then send HTTP 200 OK
     # Verify event
-    And Camel K integration slack-to-log-prop-based should print ${slack.message}
+    And Camel K integration slack-uri-pipe should print ${slack.message}
 
   Scenario: Remove resources
     # Remove Camel K binding
-    Given delete Camel K integration slack-to-log-prop-based
+    Given delete Pipe slack-uri-pipe
     Given delete Kubernetes service slack-service
-
-

@@ -14,7 +14,8 @@ The following table summarizes the configuration options available for the `slac
 | Property| Name| Description| Type| Default| Example
 | *channel {empty}* *| Channel| The Slack channel to receive messages from.| string| | `"#myroom"`
 | *token {empty}* *| Token| The Bot User OAuth Access Token to access Slack. A Slack app that has the following permissions is required: `channels:history`, `groups:history`, `im:history`, `mpim:history`, `channels:read`, `groups:read`, `im:read`, and `mpim:read`.| string| | 
-| delay| Delay| The delay between polls. If no unit provided, miliseconds is the default.| string| `"60000"`| `"60s or 6000 or 1m"`
+| delay| Delay| The delay between polls. If no unit provided, milliseconds is the default.| string| `"60000"`| `"60s or 6000 or 1m"`
+| serverUrl| Server URL| The Slack API server endpoint URL.| string| `"https://slack.com"`| `"https://slack.com"`
 |===
 
 NOTE: Fields marked with an asterisk ({empty}*) are mandatory.
