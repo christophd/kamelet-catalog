@@ -1,0 +1,25 @@
+apiVersion: camel.apache.org/v1
+kind: Pipe
+metadata:
+  name: aws-ddb-source-pipe
+spec:
+  source:
+    ref:
+      kind: Kamelet
+      apiVersion: camel.apache.org/v1
+      name: aws-ddb-streams-source
+    properties:
+      table: ${aws.ddb.tableName}
+      streamIteratorType: FROM_START
+      overrideEndpoint: true
+      uriEndpointOverride: ${YAKS_TESTCONTAINERS_LOCALSTACK_DYNAMODB_URL}
+      accessKey: ${YAKS_TESTCONTAINERS_LOCALSTACK_ACCESS_KEY}
+      secretKey: ${YAKS_TESTCONTAINERS_LOCALSTACK_SECRET_KEY}
+      region: ${YAKS_TESTCONTAINERS_LOCALSTACK_REGION}
+  sink:
+    ref:
+      kind: Kamelet
+      apiVersion: camel.apache.org/v1
+      name: log-sink
+    properties:
+      showHeaders: true
