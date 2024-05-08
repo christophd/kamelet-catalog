@@ -1,0 +1,55 @@
+config:
+  namespace:
+    temporary: false
+  runtime:
+    testcontainers:
+      enabled: true
+    env:
+      - name: YAKS_CAMEL_AUTO_REMOVE_RESOURCES
+        value: false
+      - name: YAKS_CAMELK_AUTO_REMOVE_RESOURCES
+        value: false
+      - name: YAKS_KAMELETS_AUTO_REMOVE_RESOURCES
+        value: false
+      - name: YAKS_KUBERNETES_AUTO_REMOVE_RESOURCES
+        value: false
+      - name: YAKS_KNATIVE_AUTO_REMOVE_RESOURCES
+        value: false
+      - name: YAKS_JBANG_CAMEL_DUMP_INTEGRATION_OUTPUT
+        value: true
+      - name: YAKS_TESTCONTAINERS_AUTO_REMOVE_RESOURCES
+        value: false
+      - name: CITRUS_TYPE_CONVERTER
+        value: camel
+    resources:
+      - amazonKinesisClient.groovy
+      - aws-kinesis-source-pipe.yaml
+      - aws-kinesis-sink-pipe.yaml
+      - aws-kinesis-to-log-uri-based.groovy
+      - aws-kinesis-credentials.properties
+      - aws-kinesis-uri-pipe.yaml
+    cucumber:
+      tags:
+        - "not @ignored"
+        - "not @knative"
+    settings:
+      loggers:
+        - name: INTEGRATION_STATUS
+          level: INFO
+        - name: INTEGRATION_LOGS
+          level: INFO
+      dependencies:
+        - groupId: org.apache.camel
+          artifactId: camel-aws2-kinesis
+          version: "@camel.version@"
+        - groupId: software.amazon.awssdk
+          artifactId: kinesis
+          version: "@aws-java-sdk2.version@"
+        - groupId: org.apache.camel
+          artifactId: camel-gson
+          version: "@camel.version@"
+  dump:
+    enabled: true
+    failedOnly: true
+    includes:
+      - app=camel-k

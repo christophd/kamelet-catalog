@@ -102,6 +102,7 @@ jobs:
       - name: YAKS Tests
         run: |
           yaks run test/aws/sqs $YAKS_RUN_OPTIONS
+          yaks run test/aws/kinesis $YAKS_RUN_OPTIONS
           yaks run test/transformation $YAKS_RUN_OPTIONS
           yaks run test/extract-field $YAKS_RUN_OPTIONS
           yaks run test/http-sink $YAKS_RUN_OPTIONS

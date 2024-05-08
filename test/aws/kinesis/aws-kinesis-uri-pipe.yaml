@@ -18,7 +18,7 @@
 apiVersion: camel.apache.org/v1
 kind: Pipe
 metadata:
-  name: aws-kinesis-to-inmem
+  name: aws-kinesis-uri-pipe
 spec:
   source:
     ref:
@@ -26,12 +26,11 @@ spec:
       apiVersion: camel.apache.org/v1
       name: aws-kinesis-source
     properties:
-      stream: "${camel.kamelet.aws-kinesis-source.aws-kinesis-credentials.stream}"
-      accessKey: "${camel.kamelet.aws-kinesis-source.aws-kinesis-credentials.accessKey}"
-      secretKey: "${camel.kamelet.aws-kinesis-source.aws-kinesis-credentials.secretKey}"
-      region: "${camel.kamelet.aws-kinesis-source.aws-kinesis-credentials.region}"
+      stream: '${aws.kinesis.streamName}'
+      overrideEndpoint: true
+      uriEndpointOverride: ${YAKS_TESTCONTAINERS_LOCALSTACK_KINESIS_URL}
+      accessKey: ${YAKS_TESTCONTAINERS_LOCALSTACK_ACCESS_KEY}
+      secretKey: ${YAKS_TESTCONTAINERS_LOCALSTACK_SECRET_KEY}
+      region: ${YAKS_TESTCONTAINERS_LOCALSTACK_REGION}
   sink:
-    ref:
-      kind: InMemoryChannel
-      apiVersion: messaging.knative.dev/v1
-      name: messages
+    uri: log:info
