@@ -79,6 +79,11 @@ spec:
         x-descriptors:
           - 'urn:alm:descriptor:com.tectonic.ui:checkbox'
         default: false
+      forcePathStyle:
+        title: Force Path Style
+        description: Forces path style when accessing AWS S3 buckets.
+        type: boolean
+        default: false
       keyName:
         title: Key Name
         description: The key name for saving an element in the bucket.
@@ -100,17 +105,17 @@ spec:
                     when:
                       - simple: "${header[file]}"
                         steps:
-                          - set-header:
+                          - setHeader:
                               name: CamelAwsS3Key
                               simple: "${header[file]}"
                       - simple: "${header[ce-file]}"
                         steps:
-                          - set-header:
+                          - setHeader:
                               name: CamelAwsS3Key
                               simple: "${header[ce-file]}"
                     otherwise:
                       steps:
-                        - set-header:
+                        - setHeader:
                             name: CamelAwsS3Key
                             simple: "${exchangeId}"
       - to:
@@ -123,4 +128,5 @@ spec:
             useDefaultCredentialsProvider: "{{useDefaultCredentialsProvider}}"
             uriEndpointOverride: "{{?uriEndpointOverride}}"
             overrideEndpoint: "{{overrideEndpoint}}"
+            forcePathStyle: "{{forcePathStyle}}"
             keyName: "{{?keyName}}"

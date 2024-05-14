@@ -101,6 +101,7 @@ jobs:
           yaks install --operator-image $YAKS_IMAGE_NAME:$YAKS_VERSION
       - name: YAKS Tests
         run: |
+          yaks run test/aws/s3 $YAKS_RUN_OPTIONS
           yaks run test/aws/ddb $YAKS_RUN_OPTIONS
           yaks run test/aws/sqs $YAKS_RUN_OPTIONS
           yaks run test/aws/kinesis $YAKS_RUN_OPTIONS
