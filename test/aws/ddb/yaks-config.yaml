@@ -22,6 +22,7 @@ config:
       - putItem.groovy
       - verifyItems.groovy
       - amazonDDBClient.groovy
+      - waitForLocalStack.groovy
       - aws-ddb-sink-pipe.yaml
       - aws-ddb-source-pipe.yaml
     cucumber:

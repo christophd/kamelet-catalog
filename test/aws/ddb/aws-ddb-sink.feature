@@ -10,6 +10,7 @@ Feature: AWS DDB Sink
     # Start LocalStack container
     Given Enable service DYNAMODB
     Given start LocalStack container
+    Then verify actions waitForLocalStack.groovy
 
   Scenario: Verify AWS-DDB Kamelet sink
     Given variables
