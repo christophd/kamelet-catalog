@@ -132,9 +132,9 @@ Now you should be ready to run the test!
 ## Run the test
 
 ```shell script
-$ yaks test telegram-source-uri-based.feature
-$ yaks test telegram-source-prop-based.feature
-$ yaks test telegram-source-secret-based.feature
+$ yaks run telegram-source-uri-based.feature
+$ yaks run telegram-source-prop-based.feature
+$ yaks run telegram-source-secret-based.feature
 ```
 
 You will be provided with the test log output and the test results.

@@ -85,10 +85,10 @@ Yaks operator. In this case you should change [yaks-config.yaml](yaks-config.yam
 ## Run the test
 
 ```shell script
-$ yaks test jira-source-uri-based.feature
-$ yaks test jira-source-secret-based.feature
-$ yaks test jira-source-prop-based.feature
-$ yaks test jira-source.feature
+$ yaks run jira-source-uri-based.feature
+$ yaks run jira-source-secret-based.feature
+$ yaks run jira-source-prop-based.feature
+$ yaks run jira-source.feature
 ```
 
 You can increase number of attempts to run the test by adding: "-e YAKS_CAMELK_MAX_ATTEMPTS=1000"

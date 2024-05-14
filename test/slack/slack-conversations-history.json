@@ -3,7 +3,7 @@
   "messages": [
     {
       "type": "message",
-      "user": "W12345678",
+      "user": "${slack.user.id}",
       "text": "${slack.message}",
       "ts": "1512085950.000000"
     }

@@ -46,31 +46,31 @@ You can review the installation steps for the operators in the documentation:
 To run the Kinesis source tests: 
 
 ```shell script
-$ yaks test aws-kinesis-source.feature
+$ yaks run aws-kinesis-source.feature
 ```
 
 To run the Kinesis sink tests:
 
 ```shell script
-$ yaks test aws-kinesis-sink.feature
+$ yaks run aws-kinesis-sink.feature
 ```
 
 To run tests with URI based configuration: 
 
 ```shell script
-$ yaks test aws-kinesis-source-uri-conf.feature
+$ yaks run aws-kinesis-source-uri-conf.feature
 ```
 
 To run tests with property based configuration:
 
 ```shell script
-$ yaks test aws-kinesis-source-property-conf.feature
+$ yaks run aws-kinesis-source-property-conf.feature
 ```
 
 To run tests with URI binding:
 
 ```shell script
-$ yaks test aws-kinesis-uri-pipe.feature
+$ yaks run aws-kinesis-uri-pipe.feature
 ```
 
 You will be provided with the test log output and the test results.

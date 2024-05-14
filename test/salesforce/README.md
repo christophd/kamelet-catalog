@@ -86,8 +86,8 @@ Now you should be ready to run the test!
 ## Run the test
 
 ```shell script
-$ yaks test salesforce-source.feature
-$ yaks test salesforce-binding.feature
+$ yaks run salesforce-source.feature
+$ yaks run salesforce-binding.feature
 ```
 
 You will be provided with the test log output and the test results.

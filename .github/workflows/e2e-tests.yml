@@ -112,6 +112,7 @@ jobs:
           yaks run test/protobuf $YAKS_RUN_OPTIONS
           yaks run test/ftp/sink $YAKS_RUN_OPTIONS
           yaks run test/ftp/source $YAKS_RUN_OPTIONS
+          yaks run test/slack $YAKS_RUN_OPTIONS
           yaks run test/kafka $YAKS_RUN_OPTIONS
           yaks run test/postgresql $YAKS_RUN_OPTIONS
       - name: YAKS Report

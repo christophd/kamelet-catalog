@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
 kind: Pipe
 metadata:
-  name: slack-uri-pipe
+  name: slack-source-pipe
 spec:
   source:
     ref:
@@ -13,4 +13,9 @@ spec:
       channel: ${slack.channel}
       token: ${slack.token}
   sink:
-    uri: log:info
+    ref:
+      kind: Kamelet
+      apiVersion: camel.apache.org/v1
+      name: log-sink
+      properties:
+        showHeaders: true

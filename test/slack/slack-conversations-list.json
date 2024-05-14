@@ -2,13 +2,13 @@
   "ok": true,
   "channels": [
     {
-      "id": "C012AB3CD",
+      "id": "yaks:randomString(9, UPPERCASE)",
       "name": "${slack.channel}",
       "is_channel": true,
       "is_group": false,
       "is_im": false,
       "created": 1449252889,
-      "creator": "W12345678",
+      "creator": "${slack.user.id}",
       "is_archived": false,
       "is_general": true,
       "unlinked": 0,

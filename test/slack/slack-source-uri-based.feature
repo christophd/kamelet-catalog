@@ -3,15 +3,18 @@ Feature: Slack Kamelet - URI based configuration
   Background:
     Given variables
       | slack.channel | announcements |
-      | slack.token   | xoxb-yaks:randomNumber(10)-yaks:randomNumber(13)-yaks:randomString(34) |
       | slack.message | Camel rocks! |
-    Given HTTP server timeout is 15000 ms
+      | slack.user.id | W12345678    |
+      | slack.team.id | T12345678    |
+    Given HTTP server timeout is 120000 ms
     Given HTTP server "slack-service"
 
   Scenario: Create Http server
     Given create Kubernetes service slack-service
 
   Scenario: Verify Slack events
+    Given variables
+      | slack.token   | xoxb-yaks:randomNumber(10)-yaks:randomNumber(13)-yaks:randomString(34) |
     # Create binding
     Given load Camel K integration slack-to-log-uri-based.groovy
     # Verify authentication test

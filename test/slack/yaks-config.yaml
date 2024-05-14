@@ -22,6 +22,8 @@ config:
     resources:
       - slack-to-log-uri-based.groovy
       - slack-credentials.properties
+      - slack-source-pipe.yaml
+      - slack-sink-pipe.yaml
       - slack-uri-pipe.yaml
       - slack-auth-test.json
       - slack-conversations-list.json
