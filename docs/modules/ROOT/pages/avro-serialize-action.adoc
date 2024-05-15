@@ -25,7 +25,7 @@ At runtime, the `avro-serialize-action` Kamelet relies upon the presence of the 
 
 - camel:kamelet
 - camel:core
-- camel:jackson-avro 
+- camel:jackson-avro
 
 == Usage
 
@@ -39,9 +39,9 @@ You can use the `avro-serialize-action` Kamelet as an intermediate step in a Kna
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: avro-serialize-action-binding
+  name: avro-serialize-action-pipe
 spec:
   source:
     ref:
@@ -90,11 +90,11 @@ Configure and run the action by using the following command:
 
 [source,shell]
 ----
-kamel bind --name avro-serialize-action-binding timer-source?message='{"first":"Ada","last":"Lovelace"}' --step json-deserialize-action --step avro-serialize-action -p step-1.schema='{"type": "record", "namespace": "com.example", "name": "FullName", "fields": [{"name": "first", "type": "string"},{"name": "last", "type": "string"}]}' channel:mychannel
+kamel bind --name avro-serialize-action-pipe timer-source?message='{"first":"Ada","last":"Lovelace"}' --step json-deserialize-action --step avro-serialize-action -p step-1.schema='{"type": "record", "namespace": "com.example", "name": "FullName", "fields": [{"name": "first", "type": "string"},{"name": "last", "type": "string"}]}' channel:mychannel
 
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Action
 
@@ -104,9 +104,9 @@ You can use the `avro-serialize-action` Kamelet as an intermediate step in a Kaf
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: avro-serialize-action-binding
+  name: avro-serialize-action-pipe
 spec:
   source:
     ref:
@@ -156,11 +156,11 @@ Configure and run the action by using the following command:
 
 [source,shell]
 ----
-kamel bind --name avro-serialize-action-binding timer-source?message='{"first":"Ada","last":"Lovelace"}' --step json-deserialize-action --step avro-serialize-action -p step-1.schema='{"type": "record", "namespace": "com.example", "name": "FullName", "fields": [{"name": "first", "type": "string"},{"name": "last", "type": "string"}]}' kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
+kamel bind --name avro-serialize-action-pipe timer-source?message='{"first":"Ada","last":"Lovelace"}' --step json-deserialize-action --step avro-serialize-action -p step-1.schema='{"type": "record", "namespace": "com.example", "name": "FullName", "fields": [{"name": "first", "type": "string"},{"name": "last", "type": "string"}]}' kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

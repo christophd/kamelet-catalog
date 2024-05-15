@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: mariadb-sink-binding
+  name: mariadb-sink-pipe
 spec:
   source:
     ref:

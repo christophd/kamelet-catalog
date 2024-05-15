@@ -26,7 +26,7 @@ At runtime, the `jms-apache-artemis-sink` Kamelet relies upon the presence of th
 
 - camel:jms
 - camel:kamelet
-- mvn:org.apache.activemq:artemis-jms-client-all:2.30.0 
+- mvn:org.apache.activemq:artemis-jms-client-all:2.30.0
 
 == Usage
 
@@ -40,9 +40,9 @@ You can use the `jms-apache-artemis-sink` Kamelet as a Knative sink by binding i
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: jms-apache-artemis-sink-binding
+  name: jms-apache-artemis-sink-pipe
 spec:
   source:
     ref:
@@ -84,7 +84,7 @@ Configure and run the sink by using the following command:
 kamel bind channel:mychannel jms-apache-artemis-sink -p "sink.brokerURL=tcp://my-host:61616" -p "sink.destinationName=person"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Sink
 
@@ -94,9 +94,9 @@ You can use the `jms-apache-artemis-sink` Kamelet as a Kafka sink by binding it 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: jms-apache-artemis-sink-binding
+  name: jms-apache-artemis-sink-pipe
 spec:
   source:
     ref:
@@ -139,7 +139,7 @@ Configure and run the sink by using the following command:
 kamel bind kafka.strimzi.io/v1beta1:KafkaTopic:my-topic jms-apache-artemis-sink -p "sink.brokerURL=tcp://my-host:61616" -p "sink.destinationName=person"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

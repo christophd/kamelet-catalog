@@ -45,7 +45,7 @@ At runtime, the `kafka-batch-ssl-source` Kamelet relies upon the presence of the
 - mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
 - camel:core
 - camel:kafka
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -59,9 +59,9 @@ You can use the `kafka-batch-ssl-source` Kamelet as a Knative source by binding 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-batch-ssl-source-binding
+  name: kafka-batch-ssl-source-pipe
 spec:
   source:
     ref:
@@ -105,7 +105,7 @@ Configure and run the source by using the following command:
 kamel bind kafka-batch-ssl-source -p "source.bootstrapServers=The Bootstrap Servers" -p "source.sslKeyPassword=The SSL Key Password" -p "source.sslTruststoreLocation=The SSL Truststore Location" -p "source.topic=The Topic Names" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -115,9 +115,9 @@ You can use the `kafka-batch-ssl-source` Kamelet as a Kafka source by binding it
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-batch-ssl-source-binding
+  name: kafka-batch-ssl-source-pipe
 spec:
   source:
     ref:
@@ -162,7 +162,7 @@ Configure and run the source by using the following command:
 kamel bind kafka-batch-ssl-source -p "source.bootstrapServers=The Bootstrap Servers" -p "source.sslKeyPassword=The SSL Key Password" -p "source.sslTruststoreLocation=The SSL Truststore Location" -p "source.topic=The Topic Names" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

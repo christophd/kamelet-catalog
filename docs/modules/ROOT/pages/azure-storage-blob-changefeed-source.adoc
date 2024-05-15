@@ -31,7 +31,7 @@ At runtime, the `azure-storage-blob-changefeed-source` Kamelet relies upon the p
 - camel:jsonpath
 - camel:timer
 - mvn:com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.4
-- mvn:com.azure:azure-storage-blob-changefeed:12.0.0-beta.17 
+- mvn:com.azure:azure-storage-blob-changefeed:12.0.0-beta.17
 
 == Usage
 
@@ -45,9 +45,9 @@ You can use the `azure-storage-blob-changefeed-source` Kamelet as a Knative sour
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: azure-storage-blob-changefeed-source-binding
+  name: azure-storage-blob-changefeed-source-pipe
 spec:
   source:
     ref:
@@ -89,7 +89,7 @@ Configure and run the source by using the following command:
 kamel bind azure-storage-blob-changefeed-source -p "source.accessKey=The Access Key" -p "source.accountName=The Account Name" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -99,9 +99,9 @@ You can use the `azure-storage-blob-changefeed-source` Kamelet as a Kafka source
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: azure-storage-blob-changefeed-source-binding
+  name: azure-storage-blob-changefeed-source-pipe
 spec:
   source:
     ref:
@@ -144,7 +144,7 @@ Configure and run the source by using the following command:
 kamel bind azure-storage-blob-changefeed-source -p "source.accessKey=The Access Key" -p "source.accountName=The Account Name" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: azure-storage-blob-source-binding
+  name: azure-storage-blob-source-pipe
 spec:
   source:
     ref:

@@ -24,6 +24,7 @@ The following table summarizes the configuration options available for the `aws-
 | autoCreateBucket| Autocreate Bucket| Specifies to automatically create the S3 bucket.| boolean| `false`| 
 | delay| Delay| The number of milliseconds before the next poll of the selected bucket.| integer| `500`| 
 | deleteAfterRead| Auto-delete Objects| Specifies to delete objects after consuming them.| boolean| `true`| 
+| forcePathStyle| Force Path Style| Forces path style when accessing AWS S3 buckets.| boolean| `false`| 
 | ignoreBody| Ignore Body| If true, the S3 Object body is ignored. Setting this to true overrides any behavior defined by the `includeBody` option. If false, the S3 object is put in the body.| boolean| `false`| 
 | maxMessagesPerPoll| Max Messages Per Poll| Gets the maximum number of messages as a limit to poll at each polling. Gets the maximum number of messages as a limit to poll at each polling. The default value is 10. Use 0 or a negative number to set it as unlimited.| integer| `10`| 
 | overrideEndpoint| Endpoint Overwrite| Select this option to override the endpoint URI. To use this option, you must also provide a URI for the `uriEndpointOverride` option.| boolean| `false`| 
@@ -43,7 +44,7 @@ At runtime, the `aws-s3-source` Kamelet relies upon the presence of the followin
 - camel:core
 - camel:aws2-s3
 - mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -57,9 +58,9 @@ You can use the `aws-s3-source` Kamelet as a Knative source by binding it to a K
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-s3-source-binding
+  name: aws-s3-source-pipe
 spec:
   source:
     ref:
@@ -101,7 +102,7 @@ Configure and run the source by using the following command:
 kamel bind aws-s3-source -p "source.bucketNameOrArn=The Bucket Name" -p "source.region=The AWS Region" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -111,9 +112,9 @@ You can use the `aws-s3-source` Kamelet as a Kafka source by binding it to a Kaf
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-s3-source-binding
+  name: aws-s3-source-pipe
 spec:
   source:
     ref:
@@ -156,7 +157,7 @@ Configure and run the source by using the following command:
 kamel bind aws-s3-source -p "source.bucketNameOrArn=The Bucket Name" -p "source.region=The AWS Region" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

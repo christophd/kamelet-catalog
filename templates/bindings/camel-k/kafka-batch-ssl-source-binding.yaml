@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-batch-ssl-source-binding
+  name: kafka-batch-ssl-source-pipe
 spec:
   source:
     ref:

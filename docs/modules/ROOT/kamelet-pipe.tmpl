@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: {{ .Kamelet.ObjectMeta.Name }}-binding
+  name: {{ .Kamelet.ObjectMeta.Name }}-pipe
 spec:
   {{ if eq (index .Kamelet.ObjectMeta.Labels "camel.apache.org/kamelet.type") "sink" }}source:
     ref:
@@ -40,4 +40,4 @@ spec:
       kind: {{ .GetVal "RefKind" }}
       apiVersion: {{ .GetVal "RefApiVersion" }}
       name: {{ .GetVal "RefName" }}
-{{ end }}
+  {{ end }}

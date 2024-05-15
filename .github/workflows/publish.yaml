@@ -13,10 +13,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: release-2.3.x
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: main
       - name: Build
         run: |
           cd docs

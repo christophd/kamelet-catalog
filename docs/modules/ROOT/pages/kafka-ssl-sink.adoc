@@ -41,7 +41,7 @@ At runtime, the `kafka-ssl-sink` Kamelet relies upon the presence of the followi
 
 - camel:core
 - camel:kafka
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -55,9 +55,9 @@ You can use the `kafka-ssl-sink` Kamelet as a Knative sink by binding it to a Kn
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-ssl-sink-binding
+  name: kafka-ssl-sink-pipe
 spec:
   source:
     ref:
@@ -103,7 +103,7 @@ Configure and run the sink by using the following command:
 kamel bind channel:mychannel kafka-ssl-sink -p "sink.bootstrapServers=The Brokers" -p "sink.sslKeyPassword=The SSL Key Password" -p "sink.sslKeystoreLocation=The SSL Keystore Location" -p "sink.sslKeystorePassword=The SSL Keystore Password" -p "sink.sslTruststoreLocation=The SSL Truststore Location" -p "sink.topic=The Topic Names"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Sink
 
@@ -113,9 +113,9 @@ You can use the `kafka-ssl-sink` Kamelet as a Kafka sink by binding it to a Kafk
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-ssl-sink-binding
+  name: kafka-ssl-sink-pipe
 spec:
   source:
     ref:
@@ -162,7 +162,7 @@ Configure and run the sink by using the following command:
 kamel bind kafka.strimzi.io/v1beta1:KafkaTopic:my-topic kafka-ssl-sink -p "sink.bootstrapServers=The Brokers" -p "sink.sslKeyPassword=The SSL Key Password" -p "sink.sslKeystoreLocation=The SSL Keystore Location" -p "sink.sslKeystorePassword=The SSL Keystore Password" -p "sink.sslTruststoreLocation=The SSL Truststore Location" -p "sink.topic=The Topic Names"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

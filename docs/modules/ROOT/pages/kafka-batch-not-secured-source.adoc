@@ -35,7 +35,7 @@ At runtime, the `kafka-batch-not-secured-source` Kamelet relies upon the presenc
 - mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
 - camel:kafka
 - camel:core
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -49,9 +49,9 @@ You can use the `kafka-batch-not-secured-source` Kamelet as a Knative source by 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-batch-not-secured-source-binding
+  name: kafka-batch-not-secured-source-pipe
 spec:
   source:
     ref:
@@ -93,7 +93,7 @@ Configure and run the source by using the following command:
 kamel bind kafka-batch-not-secured-source -p "source.bootstrapServers=The Bootstrap Servers" -p "source.topic=The Topic Names" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -103,9 +103,9 @@ You can use the `kafka-batch-not-secured-source` Kamelet as a Kafka source by bi
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-batch-not-secured-source-binding
+  name: kafka-batch-not-secured-source-pipe
 spec:
   source:
     ref:
@@ -148,7 +148,7 @@ Configure and run the source by using the following command:
 kamel bind kafka-batch-not-secured-source -p "source.bootstrapServers=The Bootstrap Servers" -p "source.topic=The Topic Names" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

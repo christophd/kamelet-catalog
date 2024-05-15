@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-ddb-sink-binding
+  name: aws-ddb-sink-pipe
 spec:
   source:
     ref:

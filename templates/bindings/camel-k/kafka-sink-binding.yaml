@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-sink-binding
+  name: kafka-sink-pipe
 spec:
   source:
     ref:

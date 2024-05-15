@@ -1,8 +1,8 @@
-# kamel bind --name has-header-filter-action-binding timer-source?message="Hello" --step insert-header-action -p "step-0.name=my-header" -p "step-0.value=my-value" --step has-header-filter-action -p "step-1.name=my-header" log:info
+# kamel bind --name has-header-filter-action-pipe timer-source?message="Hello" --step insert-header-action -p "step-0.name=my-header" -p "step-0.value=my-value" --step has-header-filter-action -p "step-1.name=my-header" log:info
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: has-header-filter-action-binding
+  name: has-header-filter-action-pipe
 spec:
   source:
     ref:

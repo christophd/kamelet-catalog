@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: jira-source-binding
+  name: jira-source-pipe
 spec:
   source:
     ref:

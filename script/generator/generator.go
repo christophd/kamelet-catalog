@@ -47,24 +47,20 @@ func main() {
 	}
 
 	templateFile := path.Join(docBaseDir, "kamelet.adoc.tmpl")
-	kameletBindingFile := path.Join(docBaseDir, "kamelet-binding-sink-source.tmpl")
+	pipeTemplateFile := path.Join(docBaseDir, "kamelet-pipe.tmpl")
 	propertiesListFile := path.Join(docBaseDir, "properties-list.tmpl")
 
-	docTemplate, err := template.New("kamelet.adoc.tmpl").Funcs(funcMap).ParseFiles(templateFile, kameletBindingFile, propertiesListFile)
+	docTemplate, err := template.New("kamelet.adoc.tmpl").Funcs(funcMap).ParseFiles(templateFile, pipeTemplateFile, propertiesListFile)
 	handleGeneralError(fmt.Sprintf("cannot load template file from %s", templateFile), err)
 
-	camelKYamlBindingsBaseDir := filepath.Join(projectBaseDir, "templates", "bindings", "camel-k")
-	yamlTemplateFile := path.Join(camelKYamlBindingsBaseDir, "kamelet.yaml.tmpl")
+	pipeTemplate, err := template.New("kamelet-pipe.tmpl").Funcs(funcMap).ParseFiles(pipeTemplateFile, pipeTemplateFile, propertiesListFile)
+	handleGeneralError(fmt.Sprintf("cannot load template file from %s", pipeTemplateFile), err)
 
-	yamlTemplate, err := template.New("kamelet.yaml.tmpl").Funcs(funcMap).ParseFiles(yamlTemplateFile, kameletBindingFile, propertiesListFile)
-	handleGeneralError(fmt.Sprintf("cannot load template file from %s", templateFile), err)
+	coreYamlTemplateFile := path.Join(docBaseDir, "kamelet-core-binding.yaml.tmpl")
+	parameterListFile := path.Join(docBaseDir, "parameter-list.tmpl")
 
-	coreYamlBindingsBaseDir := filepath.Join(projectBaseDir, "templates", "bindings", "core")
-	coreYamlTemplateFile := path.Join(coreYamlBindingsBaseDir, "kamelet-core-binding.yaml.tmpl")
-	parameterListFile := path.Join(coreYamlBindingsBaseDir, "parameter-list.tmpl")
-
-	coreYamlTemplate, err := template.New("kamelet-core-binding.yaml.tmpl").Funcs(funcMap).ParseFiles(coreYamlTemplateFile, kameletBindingFile, parameterListFile)
-	handleGeneralError(fmt.Sprintf("cannot load template file from %s", templateFile), err)
+	coreYamlTemplate, err := template.New("kamelet-core-binding.yaml.tmpl").Funcs(funcMap).ParseFiles(coreYamlTemplateFile, pipeTemplateFile, parameterListFile)
+	handleGeneralError(fmt.Sprintf("cannot load template file from %s", coreYamlTemplateFile), err)
 
 	kamelets := listKamelets(projectBaseDir)
 
@@ -76,15 +72,15 @@ func main() {
 
 		// check if the kamelet binding example should be generated
 		bindingFile := path.Join(projectBaseDir, "templates/bindings/camel-k", k.Name+"-binding.yaml")
-		generateExampleBinding = shouldGenerateKameletBindingExample(bindingFile)
+		generateExampleBinding = shouldGenerateBindingExample(bindingFile)
 		ctx.SetVal("GenerateExampleBinding", strconv.FormatBool(generateExampleBinding))
 
 		processDocTemplate(k, docBaseDir, err, docTemplate, &ctx)
 		links = updateImageLink(k, img, links)
 
 		if generateExampleBinding {
-			processYamlTemplate(k, projectBaseDir, err, yamlTemplate, &ctx)
-			processCoreYamlTemplate(k, projectBaseDir, err, coreYamlTemplate, &ctx)
+			processYamlTemplate(k, projectBaseDir, "camel-k", err, pipeTemplate, &ctx)
+			processYamlTemplate(k, projectBaseDir, "core", err, coreYamlTemplate, &ctx)
 		}
 	}
 
@@ -99,20 +95,12 @@ func processDocTemplate(k camel.Kamelet, baseDir string, err error, docTemplate 
 	produceDocFile(k, baseDir, buffer.String())
 }
 
-func processYamlTemplate(k camel.Kamelet, baseDir string, err error, yamlTemplate *template.Template, ctx *TemplateContext) {
+func processYamlTemplate(k camel.Kamelet, baseDir string, projectName string, err error, yamlTemplate *template.Template, ctx *TemplateContext) {
 	buffer := new(bytes.Buffer)
 	err = yamlTemplate.Execute(buffer, ctx)
-	handleGeneralError("cannot process yaml binding template", err)
+	handleGeneralError("cannot process yaml template", err)
 
-	produceBindingFile(k, baseDir, "camel-k", buffer.String())
-}
-
-func processCoreYamlTemplate(k camel.Kamelet, baseDir string, err error, yamlTemplate *template.Template, ctx *TemplateContext) {
-	buffer := new(bytes.Buffer)
-	err = yamlTemplate.Execute(buffer, ctx)
-	handleGeneralError("cannot process yaml binding template", err)
-
-	produceBindingFile(k, baseDir, "core", buffer.String())
+	produceBindingFile(k, baseDir, projectName, buffer.String())
 }
 
 func updateImageLink(k camel.Kamelet, img string, links []string) []string {
@@ -359,7 +347,7 @@ func (ctx *TemplateContext) GenerateExampleBinding() bool {
 
 // this is called from kamelet.adoc.tmpl to source the kamelet binding example from a file
 // skip the first line and replace the sink kind when the kind is a knative channel
-func (ctx *TemplateContext) ReadKameletBindingExample(kameletName string) string {
+func (ctx *TemplateContext) ReadBindingExample(kameletName string) string {
 	f := path.Join(projectBaseDir, "templates/bindings/camel-k/", kameletName+"-binding.yaml")
 	file, _ := os.Open(f)
 	defer file.Close()
@@ -509,9 +497,9 @@ func handleGeneralError(desc string, err error) {
 	}
 }
 
-// verify if the existing kamelet binding example should be automatically generated
+// verify if the existing binding example should be automatically generated
 // by checking if there is a comment marker in the first line
-func shouldGenerateKameletBindingExample(fi string) bool {
+func shouldGenerateBindingExample(fi string) bool {
 	f, err := os.Open(fi)
 	defer f.Close()
 	if err != nil {

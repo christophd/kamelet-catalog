@@ -39,7 +39,7 @@ At runtime, the `kafka-batch-source` Kamelet relies upon the presence of the fol
 - mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
 - camel:core
 - camel:kafka
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -53,9 +53,9 @@ You can use the `kafka-batch-source` Kamelet as a Knative source by binding it t
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-batch-source-binding
+  name: kafka-batch-source-pipe
 spec:
   source:
     ref:
@@ -99,7 +99,7 @@ Configure and run the source by using the following command:
 kamel bind kafka-batch-source -p "source.bootstrapServers=The Bootstrap Servers" -p "source.password=The Password" -p "source.topic=The Topic Names" -p "source.user=The Username" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -109,9 +109,9 @@ You can use the `kafka-batch-source` Kamelet as a Kafka source by binding it to 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-batch-source-binding
+  name: kafka-batch-source-pipe
 spec:
   source:
     ref:
@@ -156,7 +156,7 @@ Configure and run the source by using the following command:
 kamel bind kafka-batch-source -p "source.bootstrapServers=The Bootstrap Servers" -p "source.password=The Password" -p "source.topic=The Topic Names" -p "source.user=The Username" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

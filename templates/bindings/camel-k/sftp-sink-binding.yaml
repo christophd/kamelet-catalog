@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: sftp-sink-binding
+  name: sftp-sink-pipe
 spec:
   source:
     ref:

@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-redshift-sink-binding
+  name: aws-redshift-sink-pipe
 spec:
   source:
     ref:

@@ -25,7 +25,7 @@ At runtime, the `hoist-field-action` Kamelet relies upon the presence of the fol
 - mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
 - camel:core
 - camel:jackson
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -39,9 +39,9 @@ You can use the `hoist-field-action` Kamelet as an intermediate step in a Knativ
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: hoist-field-action-binding
+  name: hoist-field-action-pipe
 spec:
   source:
     ref:
@@ -62,7 +62,7 @@ spec:
       kind: Channel
       apiVersion: messaging.knative.dev/v1
       name: mychannel
-
+  
 ----
 
 ==== *Prerequisite*
@@ -89,7 +89,7 @@ Configure and run the action by using the following command:
 kamel bind timer-source?message=Hello --step hoist-field-action -p "step-0.field=The Field" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Action
 
@@ -99,9 +99,9 @@ You can use the `hoist-field-action` Kamelet as an intermediate step in a Kafka 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: hoist-field-action-binding
+  name: hoist-field-action-pipe
 spec:
   source:
     ref:
@@ -122,7 +122,7 @@ spec:
       kind: KafkaTopic
       apiVersion: kafka.strimzi.io/v1beta1
       name: my-topic
-
+  
 ----
 
 ==== *Prerequisites*
@@ -150,7 +150,7 @@ Configure and run the action by using the following command:
 kamel bind timer-source?message=Hello --step hoist-field-action -p "step-0.field=The Field" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

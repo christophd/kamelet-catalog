@@ -39,7 +39,7 @@ At runtime, the `kafka-batch-apicurio-registry-not-secured-source` Kamelet relie
 - camel:kafka
 - camel:core
 - camel:kamelet
-- mvn:io.quarkus:quarkus-apicurio-registry-avro:3.6.3 
+- mvn:io.quarkus:quarkus-apicurio-registry-avro:3.6.3
 
 == Usage
 
@@ -53,9 +53,9 @@ You can use the `kafka-batch-apicurio-registry-not-secured-source` Kamelet as a 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-batch-apicurio-registry-not-secured-source-binding
+  name: kafka-batch-apicurio-registry-not-secured-source-pipe
 spec:
   source:
     ref:
@@ -98,7 +98,7 @@ Configure and run the source by using the following command:
 kamel bind kafka-batch-apicurio-registry-not-secured-source -p "source.apicurioRegistryUrl=The Apicurio Registry URL" -p "source.bootstrapServers=The Bootstrap Servers" -p "source.topic=The Topic Names" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -108,9 +108,9 @@ You can use the `kafka-batch-apicurio-registry-not-secured-source` Kamelet as a 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-batch-apicurio-registry-not-secured-source-binding
+  name: kafka-batch-apicurio-registry-not-secured-source-pipe
 spec:
   source:
     ref:
@@ -154,7 +154,7 @@ Configure and run the source by using the following command:
 kamel bind kafka-batch-apicurio-registry-not-secured-source -p "source.apicurioRegistryUrl=The Apicurio Registry URL" -p "source.bootstrapServers=The Bootstrap Servers" -p "source.topic=The Topic Names" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

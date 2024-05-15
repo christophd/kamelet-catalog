@@ -18,7 +18,7 @@ At runtime, the `json-serialize-action` Kamelet relies upon the presence of the 
 - mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
 - camel:kamelet
 - camel:core
-- camel:jackson 
+- camel:jackson
 
 == Usage
 
@@ -32,9 +32,9 @@ You can use the `json-serialize-action` Kamelet as an intermediate step in a Kna
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: json-serialize-action-binding
+  name: json-serialize-action-pipe
 spec:
   source:
     ref:
@@ -53,7 +53,7 @@ spec:
       kind: Channel
       apiVersion: messaging.knative.dev/v1
       name: mychannel
-
+  
 ----
 
 ==== *Prerequisite*
@@ -80,7 +80,7 @@ Configure and run the action by using the following command:
 kamel bind timer-source?message=Hello --step json-serialize-action channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Action
 
@@ -90,9 +90,9 @@ You can use the `json-serialize-action` Kamelet as an intermediate step in a Kaf
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: json-serialize-action-binding
+  name: json-serialize-action-pipe
 spec:
   source:
     ref:
@@ -111,7 +111,7 @@ spec:
       kind: KafkaTopic
       apiVersion: kafka.strimzi.io/v1beta1
       name: my-topic
-
+  
 ----
 
 ==== *Prerequisites*
@@ -139,7 +139,7 @@ Configure and run the action by using the following command:
 kamel bind timer-source?message=Hello --step json-serialize-action kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

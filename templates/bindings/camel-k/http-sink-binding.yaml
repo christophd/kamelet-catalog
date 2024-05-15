@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: http-sink-binding
+  name: http-sink-pipe
 spec:
   source:
     ref:

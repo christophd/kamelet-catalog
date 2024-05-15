@@ -6,7 +6,7 @@
 
 Query data from a Microsoft SQL Server Database.
 
-In your KameletBinding file, you must explicitly declare the SQL Server driver dependency in spec->integration->dependencies
+In your Pipe file, you must explicitly declare the SQL Server driver dependency in spec->integration->dependencies
 
 - "mvn:com.microsoft.sqlserver:mssql-jdbc:<version>"
 
@@ -38,7 +38,7 @@ At runtime, the `sqlserver-source` Kamelet relies upon the presence of the follo
 - camel:jackson
 - camel:kamelet
 - camel:sql
-- mvn:org.apache.commons:commons-dbcp2:2.10.0 
+- mvn:org.apache.commons:commons-dbcp2:2.10.0
 
 == Usage
 
@@ -52,9 +52,9 @@ You can use the `sqlserver-source` Kamelet as a Knative source by binding it to 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: sqlserver-source-binding
+  name: sqlserver-source-pipe
 spec:
   source:
     ref:
@@ -99,7 +99,7 @@ Configure and run the source by using the following command:
 kamel bind sqlserver-source -p "source.databaseName=The Database Name" -p "source.password=The Password" -p "source.query=INSERT INTO accounts (username,city) VALUES (:#username,:#city)" -p "source.serverName=localhost" -p "source.username=The Username" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -109,9 +109,9 @@ You can use the `sqlserver-source` Kamelet as a Kafka source by binding it to a 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: sqlserver-source-binding
+  name: sqlserver-source-pipe
 spec:
   source:
     ref:
@@ -157,7 +157,7 @@ Configure and run the source by using the following command:
 kamel bind sqlserver-source -p "source.databaseName=The Database Name" -p "source.password=The Password" -p "source.query=INSERT INTO accounts (username,city) VALUES (:#username,:#city)" -p "source.serverName=localhost" -p "source.username=The Username" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

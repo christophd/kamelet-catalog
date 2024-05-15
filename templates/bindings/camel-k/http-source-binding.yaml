@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: http-source-binding
+  name: http-source-pipe
 spec:
   source:
     ref:

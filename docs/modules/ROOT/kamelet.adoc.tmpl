@@ -19,7 +19,7 @@ The `{{ .Kamelet.ObjectMeta.Name }}` Kamelet does not specify any configuration 
 
 At runtime, the `{{ .Kamelet.ObjectMeta.Name }}` Kamelet relies upon the presence of the following dependencies:
 {{range .Kamelet.Spec.Dependencies}}
-- {{ . }}{{end}} 
+- {{ . }}{{end}}
 
 == Usage
 
@@ -37,9 +37,9 @@ You can use the `{{ .Kamelet.ObjectMeta.Name }}` Kamelet as a Knative {{ index .
 [source,yaml]
 ----
 {{ if .GenerateExampleBinding }}
-{{- template "kamelet-binding-sink-source.tmpl" . -}}
+{{- template "kamelet-pipe.tmpl" . -}}
 {{ else }}
-{{- .ReadKameletBindingExample .Kamelet.ObjectMeta.Name -}}
+{{- .ReadBindingExample .Kamelet.ObjectMeta.Name -}}
 {{ end }}
 ----
 
@@ -67,7 +67,7 @@ Configure and run the {{ index .Kamelet.ObjectMeta.Labels "camel.apache.org/kame
 {{ .ExampleKamelBindCommand "channel:mychannel" }}
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka {{ index .Kamelet.ObjectMeta.Labels "camel.apache.org/kamelet.type" | ToCamel }}
 
@@ -80,9 +80,9 @@ You can use the `{{ .Kamelet.ObjectMeta.Name }}` Kamelet as a Kafka {{ index .Ka
 [source,yaml]
 ----
 {{ if .GenerateExampleBinding }}
-{{- template "kamelet-binding-sink-source.tmpl" . -}}
+{{- template "kamelet-pipe.tmpl" . -}}
 {{ else }}
-{{- .ReadKameletBindingExample .Kamelet.ObjectMeta.Name -}}
+{{- .ReadBindingExample .Kamelet.ObjectMeta.Name -}}
 {{ end }}
 ----
 
@@ -111,7 +111,7 @@ Configure and run the {{ index .Kamelet.ObjectMeta.Labels "camel.apache.org/kame
 {{ .ExampleKamelBindCommand "kafka.strimzi.io/v1beta1:KafkaTopic:my-topic" }}
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

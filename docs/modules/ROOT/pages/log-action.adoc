@@ -35,7 +35,7 @@ NOTE: Fields marked with an asterisk ({empty}*) are mandatory.
 At runtime, the `log-action` Kamelet relies upon the presence of the following dependencies:
 
 - camel:kamelet
-- camel:log 
+- camel:log
 
 == Usage
 
@@ -49,9 +49,9 @@ You can use the `log-action` Kamelet as an intermediate step in a Knative bindin
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: log-action-binding
+  name: log-action-pipe
 spec:
   source:
     ref:
@@ -70,7 +70,7 @@ spec:
       kind: Channel
       apiVersion: messaging.knative.dev/v1
       name: mychannel
-
+  
 ----
 
 ==== *Prerequisite*
@@ -97,7 +97,7 @@ Configure and run the action by using the following command:
 kamel bind timer-source?message=Hello --step log-action channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Action
 
@@ -107,9 +107,9 @@ You can use the `log-action` Kamelet as an intermediate step in a Kafka binding.
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: log-action-binding
+  name: log-action-pipe
 spec:
   source:
     ref:
@@ -128,7 +128,7 @@ spec:
       kind: KafkaTopic
       apiVersion: kafka.strimzi.io/v1beta1
       name: my-topic
-
+  
 ----
 
 ==== *Prerequisites*
@@ -156,7 +156,7 @@ Configure and run the action by using the following command:
 kamel bind timer-source?message=Hello --step log-action kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

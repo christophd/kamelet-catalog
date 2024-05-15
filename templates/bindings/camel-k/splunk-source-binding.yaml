@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: splunk-source-binding
+  name: splunk-source-pipe
 spec:
   source:
     ref:

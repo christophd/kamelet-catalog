@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: ftp-source-binding
+  name: ftp-source-pipe
 spec:
   source:
     ref:

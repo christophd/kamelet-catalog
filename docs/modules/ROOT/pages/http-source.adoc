@@ -27,7 +27,7 @@ At runtime, the `http-source` Kamelet relies upon the presence of the following 
 - camel:http
 - camel:kamelet
 - camel:core
-- camel:timer 
+- camel:timer
 
 == Usage
 
@@ -41,9 +41,9 @@ You can use the `http-source` Kamelet as a Knative source by binding it to a Kna
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: http-source-binding
+  name: http-source-pipe
 spec:
   source:
     ref:
@@ -84,7 +84,7 @@ Configure and run the source by using the following command:
 kamel bind http-source -p "source.url=https://gist.githubusercontent.com/nicolaferraro/e3c72ace3c751f9f88273896611ce5fe/raw/3b6f54060bacb56b6719b7386a4645cb59ad6cc1/quote.json" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -94,9 +94,9 @@ You can use the `http-source` Kamelet as a Kafka source by binding it to a Kafka
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: http-source-binding
+  name: http-source-pipe
 spec:
   source:
     ref:
@@ -138,7 +138,7 @@ Configure and run the source by using the following command:
 kamel bind http-source -p "source.url=https://gist.githubusercontent.com/nicolaferraro/e3c72ace3c751f9f88273896611ce5fe/raw/3b6f54060bacb56b6719b7386a4645cb59ad6cc1/quote.json" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

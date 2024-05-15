@@ -30,7 +30,7 @@ At runtime, the `azure-eventhubs-source` Kamelet relies upon the presence of the
 
 - camel:azure-eventhubs
 - camel:kamelet
-- camel:jackson 
+- camel:jackson
 
 == Usage
 
@@ -44,9 +44,9 @@ You can use the `azure-eventhubs-source` Kamelet as a Knative source by binding 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: azure-eventhubs-source-binding
+  name: azure-eventhubs-source-pipe
 spec:
   source:
     ref:
@@ -93,7 +93,7 @@ Configure and run the source by using the following command:
 kamel bind azure-eventhubs-source -p "source.blobAccessKey=The Azure Storage Blob Access Key" -p "source.blobAccountName=The Azure Storage Blob Account Name" -p "source.blobContainerName=The Azure Storage Blob Container Name" -p "source.eventhubName=The Eventhubs Name" -p "source.namespaceName=The Eventhubs Namespace" -p "source.sharedAccessKey=The Share Access Key" -p "source.sharedAccessName=The Share Access Name" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -103,9 +103,9 @@ You can use the `azure-eventhubs-source` Kamelet as a Kafka source by binding it
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: azure-eventhubs-source-binding
+  name: azure-eventhubs-source-pipe
 spec:
   source:
     ref:
@@ -153,7 +153,7 @@ Configure and run the source by using the following command:
 kamel bind azure-eventhubs-source -p "source.blobAccessKey=The Azure Storage Blob Access Key" -p "source.blobAccountName=The Azure Storage Blob Account Name" -p "source.blobContainerName=The Azure Storage Blob Container Name" -p "source.eventhubName=The Eventhubs Name" -p "source.namespaceName=The Eventhubs Namespace" -p "source.sharedAccessKey=The Share Access Key" -p "source.sharedAccessName=The Share Access Name" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

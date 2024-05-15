@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: insert-header-action-binding
+  name: insert-header-action-pipe
 spec:
   source:
     ref:
@@ -23,3 +23,4 @@ spec:
       kind: KafkaTopic
       apiVersion: kafka.strimzi.io/v1beta1
       name: my-topic
+  

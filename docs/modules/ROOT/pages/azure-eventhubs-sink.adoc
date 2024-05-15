@@ -31,7 +31,7 @@ At runtime, the `azure-eventhubs-sink` Kamelet relies upon the presence of the f
 
 - camel:core
 - camel:azure-eventhubs
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -45,9 +45,9 @@ You can use the `azure-eventhubs-sink` Kamelet as a Knative sink by binding it t
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: azure-eventhubs-sink-binding
+  name: azure-eventhubs-sink-pipe
 spec:
   source:
     ref:
@@ -91,7 +91,7 @@ Configure and run the sink by using the following command:
 kamel bind channel:mychannel azure-eventhubs-sink -p "sink.eventhubName=The Eventhubs Name" -p "sink.namespaceName=The Eventhubs Namespace" -p "sink.sharedAccessKey=The Share Access Key" -p "sink.sharedAccessName=The Share Access Name"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Sink
 
@@ -101,9 +101,9 @@ You can use the `azure-eventhubs-sink` Kamelet as a Kafka sink by binding it to 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: azure-eventhubs-sink-binding
+  name: azure-eventhubs-sink-pipe
 spec:
   source:
     ref:
@@ -148,7 +148,7 @@ Configure and run the sink by using the following command:
 kamel bind kafka.strimzi.io/v1beta1:KafkaTopic:my-topic azure-eventhubs-sink -p "sink.eventhubName=The Eventhubs Name" -p "sink.namespaceName=The Eventhubs Namespace" -p "sink.sharedAccessKey=The Share Access Key" -p "sink.sharedAccessName=The Share Access Name"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

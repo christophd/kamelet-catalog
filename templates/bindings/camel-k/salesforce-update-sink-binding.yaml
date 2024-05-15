@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: salesforce-update-sink-binding
+  name: salesforce-update-sink-pipe
 spec:
   source:
     ref:

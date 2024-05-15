@@ -39,7 +39,7 @@ At runtime, the `mongodb-source` Kamelet relies upon the presence of the followi
 - camel:kamelet
 - camel:mongodb
 - camel:jackson
-- mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0 
+- mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
 
 == Usage
 
@@ -53,9 +53,9 @@ You can use the `mongodb-source` Kamelet as a Knative source by binding it to a 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: mongodb-source-binding
+  name: mongodb-source-pipe
 spec:
   source:
     ref:
@@ -98,7 +98,7 @@ Configure and run the source by using the following command:
 kamel bind mongodb-source -p "source.collection=The MongoDB Collection" -p "source.database=The MongoDB Database" -p "source.hosts=The MongoDB Hosts" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -108,9 +108,9 @@ You can use the `mongodb-source` Kamelet as a Kafka source by binding it to a Ka
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: mongodb-source-binding
+  name: mongodb-source-pipe
 spec:
   source:
     ref:
@@ -154,7 +154,7 @@ Configure and run the source by using the following command:
 kamel bind mongodb-source -p "source.collection=The MongoDB Collection" -p "source.database=The MongoDB Database" -p "source.hosts=The MongoDB Hosts" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

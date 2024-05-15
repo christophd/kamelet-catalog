@@ -44,7 +44,7 @@ At runtime, the `splunk-source` Kamelet relies upon the presence of the followin
 - camel:core
 - camel:splunk
 - camel:kamelet
-- mvn:com.fasterxml.jackson.datatype:jackson-datatype-joda:2.12.5 
+- mvn:com.fasterxml.jackson.datatype:jackson-datatype-joda:2.12.5
 
 == Usage
 
@@ -58,9 +58,9 @@ You can use the `splunk-source` Kamelet as a Knative source by binding it to a K
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: splunk-source-binding
+  name: splunk-source-pipe
 spec:
   source:
     ref:
@@ -105,7 +105,7 @@ Configure and run the source by using the following command:
 kamel bind splunk-source -p "source.initEarliestTime=05/17/22 08:35:46:456" -p "source.password=The Password" -p "source.query=The Query" -p "source.serverHostname=my_server_splunk.com" -p "source.username=The Username" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -115,9 +115,9 @@ You can use the `splunk-source` Kamelet as a Kafka source by binding it to a Kaf
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: splunk-source-binding
+  name: splunk-source-pipe
 spec:
   source:
     ref:
@@ -163,7 +163,7 @@ Configure and run the source by using the following command:
 kamel bind splunk-source -p "source.initEarliestTime=05/17/22 08:35:46:456" -p "source.password=The Password" -p "source.query=The Query" -p "source.serverHostname=my_server_splunk.com" -p "source.username=The Username" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

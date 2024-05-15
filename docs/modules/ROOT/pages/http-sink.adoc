@@ -25,7 +25,7 @@ At runtime, the `http-sink` Kamelet relies upon the presence of the following de
 
 - camel:http
 - camel:kamelet
-- camel:core 
+- camel:core
 
 == Usage
 
@@ -39,9 +39,9 @@ You can use the `http-sink` Kamelet as a Knative sink by binding it to a Knative
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: http-sink-binding
+  name: http-sink-pipe
 spec:
   source:
     ref:
@@ -82,7 +82,7 @@ Configure and run the sink by using the following command:
 kamel bind channel:mychannel http-sink -p "sink.url=https://my-service/path"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Sink
 
@@ -92,9 +92,9 @@ You can use the `http-sink` Kamelet as a Kafka sink by binding it to a Kafka top
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: http-sink-binding
+  name: http-sink-pipe
 spec:
   source:
     ref:
@@ -136,7 +136,7 @@ Configure and run the sink by using the following command:
 kamel bind kafka.strimzi.io/v1beta1:KafkaTopic:my-topic http-sink -p "sink.url=https://my-service/path"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

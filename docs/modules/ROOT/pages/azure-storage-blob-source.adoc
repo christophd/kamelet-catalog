@@ -34,7 +34,7 @@ At runtime, the `azure-storage-blob-source` Kamelet relies upon the presence of 
 - camel:core
 - camel:jsonpath
 - camel:timer
-- mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0 
+- mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
 
 == Usage
 
@@ -48,9 +48,9 @@ You can use the `azure-storage-blob-source` Kamelet as a Knative source by bindi
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: azure-storage-blob-source-binding
+  name: azure-storage-blob-source-pipe
 spec:
   source:
     ref:
@@ -92,7 +92,7 @@ Configure and run the source by using the following command:
 kamel bind azure-storage-blob-source -p "source.accountName=The Account Name" -p "source.containerName=The Container Name" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -102,9 +102,9 @@ You can use the `azure-storage-blob-source` Kamelet as a Kafka source by binding
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: azure-storage-blob-source-binding
+  name: azure-storage-blob-source-pipe
 spec:
   source:
     ref:
@@ -147,7 +147,7 @@ Configure and run the source by using the following command:
 kamel bind azure-storage-blob-source -p "source.accountName=The Account Name" -p "source.containerName=The Container Name" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

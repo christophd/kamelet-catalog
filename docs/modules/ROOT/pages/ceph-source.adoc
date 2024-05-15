@@ -33,7 +33,7 @@ NOTE: Fields marked with an asterisk ({empty}*) are mandatory.
 At runtime, the `ceph-source` Kamelet relies upon the presence of the following dependencies:
 
 - camel:aws2-s3
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -47,9 +47,9 @@ You can use the `ceph-source` Kamelet as a Knative source by binding it to a Kna
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: ceph-source-binding
+  name: ceph-source-pipe
 spec:
   source:
     ref:
@@ -94,7 +94,7 @@ Configure and run the source by using the following command:
 kamel bind ceph-source -p "source.accessKey=The Access Key" -p "source.bucketName=The Bucket Name" -p "source.cephUrl=http://ceph-storage-address.com" -p "source.secretKey=The Secret Key" -p "source.zoneGroup=The Bucket Zone Group" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -104,9 +104,9 @@ You can use the `ceph-source` Kamelet as a Kafka source by binding it to a Kafka
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: ceph-source-binding
+  name: ceph-source-pipe
 spec:
   source:
     ref:
@@ -152,7 +152,7 @@ Configure and run the source by using the following command:
 kamel bind ceph-source -p "source.accessKey=The Access Key" -p "source.bucketName=The Bucket Name" -p "source.cephUrl=http://ceph-storage-address.com" -p "source.secretKey=The Secret Key" -p "source.zoneGroup=The Bucket Zone Group" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

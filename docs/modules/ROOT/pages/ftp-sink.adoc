@@ -36,7 +36,7 @@ At runtime, the `ftp-sink` Kamelet relies upon the presence of the following dep
 
 - camel:ftp
 - camel:core
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -50,9 +50,9 @@ You can use the `ftp-sink` Kamelet as a Knative sink by binding it to a Knative 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: ftp-sink-binding
+  name: ftp-sink-pipe
 spec:
   source:
     ref:
@@ -96,7 +96,7 @@ Configure and run the sink by using the following command:
 kamel bind channel:mychannel ftp-sink -p "sink.connectionHost=The Connection Host" -p "sink.directoryName=The Directory Name" -p "sink.password=The Password" -p "sink.username=The Username"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Sink
 
@@ -106,9 +106,9 @@ You can use the `ftp-sink` Kamelet as a Kafka sink by binding it to a Kafka topi
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: ftp-sink-binding
+  name: ftp-sink-pipe
 spec:
   source:
     ref:
@@ -153,7 +153,7 @@ Configure and run the sink by using the following command:
 kamel bind kafka.strimzi.io/v1beta1:KafkaTopic:my-topic ftp-sink -p "sink.connectionHost=The Connection Host" -p "sink.directoryName=The Directory Name" -p "sink.password=The Password" -p "sink.username=The Username"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

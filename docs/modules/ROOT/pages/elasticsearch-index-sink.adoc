@@ -45,7 +45,7 @@ At runtime, the `elasticsearch-index-sink` Kamelet relies upon the presence of t
 - camel:kamelet
 - camel:elasticsearch
 - camel:gson
-- camel:bean 
+- camel:bean
 
 == Usage
 
@@ -59,9 +59,9 @@ You can use the `elasticsearch-index-sink` Kamelet as a Knative sink by binding 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: elasticsearch-index-sink-binding
+  name: elasticsearch-index-sink-pipe
 spec:
   source:
     ref:
@@ -103,7 +103,7 @@ Configure and run the sink by using the following command:
 kamel bind channel:mychannel elasticsearch-index-sink -p "sink.clusterName=quickstart" -p "sink.hostAddresses=quickstart-es-http:9200"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Sink
 
@@ -113,9 +113,9 @@ You can use the `elasticsearch-index-sink` Kamelet as a Kafka sink by binding it
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: elasticsearch-index-sink-binding
+  name: elasticsearch-index-sink-pipe
 spec:
   source:
     ref:
@@ -158,7 +158,7 @@ Configure and run the sink by using the following command:
 kamel bind kafka.strimzi.io/v1beta1:KafkaTopic:my-topic elasticsearch-index-sink -p "sink.clusterName=quickstart" -p "sink.hostAddresses=quickstart-es-http:9200"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

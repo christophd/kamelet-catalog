@@ -45,7 +45,7 @@ At runtime, the `kafka-batch-azure-schema-registry-source` Kamelet relies upon t
 - camel:azure-schema-registry
 - mvn:com.microsoft.azure:azure-schemaregistry-kafka-avro:1.1.1
 - mvn:com.azure:azure-data-schemaregistry-apacheavro:1.1.13
-- mvn:com.azure:azure-identity:1.11.1 
+- mvn:com.azure:azure-identity:1.11.1
 
 == Usage
 
@@ -59,9 +59,9 @@ You can use the `kafka-batch-azure-schema-registry-source` Kamelet as a Knative 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-batch-azure-schema-registry-source-binding
+  name: kafka-batch-azure-schema-registry-source-pipe
 spec:
   source:
     ref:
@@ -105,7 +105,7 @@ Configure and run the source by using the following command:
 kamel bind kafka-batch-azure-schema-registry-source -p "source.azureRegistryUrl=The Azure Schema Registry URL" -p "source.bootstrapServers=The Bootstrap Servers" -p "source.password=The Password" -p "source.topic=The Topic Names" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -115,9 +115,9 @@ You can use the `kafka-batch-azure-schema-registry-source` Kamelet as a Kafka so
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-batch-azure-schema-registry-source-binding
+  name: kafka-batch-azure-schema-registry-source-pipe
 spec:
   source:
     ref:
@@ -162,7 +162,7 @@ Configure and run the source by using the following command:
 kamel bind kafka-batch-azure-schema-registry-source -p "source.azureRegistryUrl=The Azure Schema Registry URL" -p "source.bootstrapServers=The Bootstrap Servers" -p "source.password=The Password" -p "source.topic=The Topic Names" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

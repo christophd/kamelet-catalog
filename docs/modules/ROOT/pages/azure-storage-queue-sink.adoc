@@ -28,7 +28,7 @@ At runtime, the `azure-storage-queue-sink` Kamelet relies upon the presence of t
 
 - camel:core
 - camel:azure-storage-queue
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -42,9 +42,9 @@ You can use the `azure-storage-queue-sink` Kamelet as a Knative sink by binding 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: azure-storage-queue-sink-binding
+  name: azure-storage-queue-sink-pipe
 spec:
   source:
     ref:
@@ -87,7 +87,7 @@ Configure and run the sink by using the following command:
 kamel bind channel:mychannel azure-storage-queue-sink -p "sink.accessKey=The Access Key" -p "sink.accountName=The Account Name" -p "sink.queueName=The Queue Name"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Sink
 
@@ -97,9 +97,9 @@ You can use the `azure-storage-queue-sink` Kamelet as a Kafka sink by binding it
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: azure-storage-queue-sink-binding
+  name: azure-storage-queue-sink-pipe
 spec:
   source:
     ref:
@@ -143,7 +143,7 @@ Configure and run the sink by using the following command:
 kamel bind kafka.strimzi.io/v1beta1:KafkaTopic:my-topic azure-storage-queue-sink -p "sink.accessKey=The Access Key" -p "sink.accountName=The Account Name" -p "sink.queueName=The Queue Name"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

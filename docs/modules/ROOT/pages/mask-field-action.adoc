@@ -26,7 +26,7 @@ At runtime, the `mask-field-action` Kamelet relies upon the presence of the foll
 - mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
 - camel:jackson
 - camel:kamelet
-- camel:core 
+- camel:core
 
 == Usage
 
@@ -40,9 +40,9 @@ You can use the `mask-field-action` Kamelet as an intermediate step in a Knative
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: mask-field-action-binding
+  name: mask-field-action-pipe
 spec:
   source:
     ref:
@@ -64,7 +64,7 @@ spec:
       kind: Channel
       apiVersion: messaging.knative.dev/v1
       name: mychannel
-
+  
 ----
 
 ==== *Prerequisite*
@@ -91,7 +91,7 @@ Configure and run the action by using the following command:
 kamel bind timer-source?message=Hello --step mask-field-action -p "step-0.fields=The Fields" -p "step-0.replacement=The Replacement" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Action
 
@@ -101,9 +101,9 @@ You can use the `mask-field-action` Kamelet as an intermediate step in a Kafka b
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: mask-field-action-binding
+  name: mask-field-action-pipe
 spec:
   source:
     ref:
@@ -125,7 +125,7 @@ spec:
       kind: KafkaTopic
       apiVersion: kafka.strimzi.io/v1beta1
       name: my-topic
-
+  
 ----
 
 ==== *Prerequisites*
@@ -153,7 +153,7 @@ Configure and run the action by using the following command:
 kamel bind timer-source?message=Hello --step mask-field-action -p "step-0.fields=The Fields" -p "step-0.replacement=The Replacement" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

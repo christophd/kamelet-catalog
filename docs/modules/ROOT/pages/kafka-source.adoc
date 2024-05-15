@@ -36,7 +36,7 @@ At runtime, the `kafka-source` Kamelet relies upon the presence of the following
 - mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
 - camel:core
 - camel:kafka
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -50,9 +50,9 @@ You can use the `kafka-source` Kamelet as a Knative source by binding it to a Kn
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-source-binding
+  name: kafka-source-pipe
 spec:
   source:
     ref:
@@ -96,7 +96,7 @@ Configure and run the source by using the following command:
 kamel bind kafka-source -p "source.bootstrapServers=The Bootstrap Servers" -p "source.password=The Password" -p "source.topic=The Topic Names" -p "source.user=The Username" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -106,9 +106,9 @@ You can use the `kafka-source` Kamelet as a Kafka source by binding it to a Kafk
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-source-binding
+  name: kafka-source-pipe
 spec:
   source:
     ref:
@@ -153,7 +153,7 @@ Configure and run the source by using the following command:
 kamel bind kafka-source -p "source.bootstrapServers=The Bootstrap Servers" -p "source.password=The Password" -p "source.topic=The Topic Names" -p "source.user=The Username" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

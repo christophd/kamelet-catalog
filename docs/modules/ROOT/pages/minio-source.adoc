@@ -28,7 +28,7 @@ NOTE: Fields marked with an asterisk ({empty}*) are mandatory.
 At runtime, the `minio-source` Kamelet relies upon the presence of the following dependencies:
 
 - camel:minio
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -42,9 +42,9 @@ You can use the `minio-source` Kamelet as a Knative source by binding it to a Kn
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: minio-source-binding
+  name: minio-source-pipe
 spec:
   source:
     ref:
@@ -88,7 +88,7 @@ Configure and run the source by using the following command:
 kamel bind minio-source -p "source.accessKey=The Access Key" -p "source.bucketName=The Bucket Name" -p "source.endpoint=http://localhost:9000" -p "source.secretKey=The Secret Key" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -98,9 +98,9 @@ You can use the `minio-source` Kamelet as a Kafka source by binding it to a Kafk
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: minio-source-binding
+  name: minio-source-pipe
 spec:
   source:
     ref:
@@ -145,7 +145,7 @@ Configure and run the source by using the following command:
 kamel bind minio-source -p "source.accessKey=The Access Key" -p "source.bucketName=The Bucket Name" -p "source.endpoint=http://localhost:9000" -p "source.secretKey=The Secret Key" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

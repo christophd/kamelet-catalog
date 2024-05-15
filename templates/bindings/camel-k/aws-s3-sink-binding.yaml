@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-s3-sink-binding
+  name: aws-s3-sink-pipe
 spec:
   source:
     ref:

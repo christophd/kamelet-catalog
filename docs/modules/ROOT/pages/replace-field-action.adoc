@@ -37,7 +37,7 @@ At runtime, the `replace-field-action` Kamelet relies upon the presence of the f
 - mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
 - camel:core
 - camel:jackson
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -51,9 +51,9 @@ You can use the `replace-field-action` Kamelet as an intermediate step in a Knat
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: replace-field-action-binding
+  name: replace-field-action-pipe
 spec:
   source:
     ref:
@@ -74,7 +74,7 @@ spec:
       kind: Channel
       apiVersion: messaging.knative.dev/v1
       name: mychannel
-
+  
 ----
 
 ==== *Prerequisite*
@@ -101,7 +101,7 @@ Configure and run the action by using the following command:
 kamel bind timer-source?message=Hello --step replace-field-action -p "step-0.renames=foo:bar,c1:c2" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Action
 
@@ -111,9 +111,9 @@ You can use the `replace-field-action` Kamelet as an intermediate step in a Kafk
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: replace-field-action-binding
+  name: replace-field-action-pipe
 spec:
   source:
     ref:
@@ -134,7 +134,7 @@ spec:
       kind: KafkaTopic
       apiVersion: kafka.strimzi.io/v1beta1
       name: my-topic
-
+  
 ----
 
 ==== *Prerequisites*
@@ -162,7 +162,7 @@ Configure and run the action by using the following command:
 kamel bind timer-source?message=Hello --step replace-field-action -p "step-0.renames=foo:bar,c1:c2" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

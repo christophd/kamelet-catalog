@@ -6,7 +6,7 @@
 
 Send data to a Microsoft SQL Server Database.
 
-In your KameletBinding file, you must explicitly declare the SQL Server driver dependency in spec->integration->dependencies
+In your Pipe file, you must explicitly declare the SQL Server driver dependency in spec->integration->dependencies
 
 - "mvn:com.microsoft.sqlserver:mssql-jdbc:<version>"
 
@@ -44,7 +44,7 @@ At runtime, the `sqlserver-sink` Kamelet relies upon the presence of the followi
 - camel:jackson
 - camel:kamelet
 - camel:sql
-- mvn:org.apache.commons:commons-dbcp2:2.10.0 
+- mvn:org.apache.commons:commons-dbcp2:2.10.0
 
 == Usage
 
@@ -58,9 +58,9 @@ You can use the `sqlserver-sink` Kamelet as a Knative sink by binding it to a Kn
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: sqlserver-sink-binding
+  name: sqlserver-sink-pipe
 spec:
   source:
     ref:
@@ -105,7 +105,7 @@ Configure and run the sink by using the following command:
 kamel bind channel:mychannel sqlserver-sink -p "sink.databaseName=The Database Name" -p "sink.password=The Password" -p "sink.query=INSERT INTO accounts (username,city) VALUES (:#username,:#city)" -p "sink.serverName=localhost" -p "sink.username=The Username"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Sink
 
@@ -115,9 +115,9 @@ You can use the `sqlserver-sink` Kamelet as a Kafka sink by binding it to a Kafk
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: sqlserver-sink-binding
+  name: sqlserver-sink-pipe
 spec:
   source:
     ref:
@@ -163,7 +163,7 @@ Configure and run the sink by using the following command:
 kamel bind kafka.strimzi.io/v1beta1:KafkaTopic:my-topic sqlserver-sink -p "sink.databaseName=The Database Name" -p "sink.password=The Password" -p "sink.query=INSERT INTO accounts (username,city) VALUES (:#username,:#city)" -p "sink.serverName=localhost" -p "sink.username=The Username"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

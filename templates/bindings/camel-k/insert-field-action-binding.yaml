@@ -1,8 +1,8 @@
-# kamel bind --name insert-field-action-binding timer-source?message='{"foo":"John"}' --step json-deserialize-action --step insert-field-action -p step-1.field='The Field' -p step-1.value='The Value' log:info
+# kamel bind --name insert-field-action-pipe timer-source?message='{"foo":"John"}' --step json-deserialize-action --step insert-field-action -p step-1.field='The Field' -p step-1.value='The Value' log:info
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: insert-field-action-binding
+  name: insert-field-action-pipe
 spec:
   source:
     ref:

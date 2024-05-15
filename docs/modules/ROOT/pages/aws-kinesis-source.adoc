@@ -38,7 +38,7 @@ At runtime, the `aws-kinesis-source` Kamelet relies upon the presence of the fol
 - camel:aws2-kinesis
 - camel:kamelet
 - camel:core
-- mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0 
+- mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
 
 == Usage
 
@@ -52,9 +52,9 @@ You can use the `aws-kinesis-source` Kamelet as a Knative source by binding it t
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-kinesis-source-binding
+  name: aws-kinesis-source-pipe
 spec:
   source:
     ref:
@@ -96,7 +96,7 @@ Configure and run the source by using the following command:
 kamel bind aws-kinesis-source -p "source.region=The AWS Region" -p "source.stream=The Stream Name" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -106,9 +106,9 @@ You can use the `aws-kinesis-source` Kamelet as a Kafka source by binding it to 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-kinesis-source-binding
+  name: aws-kinesis-source-pipe
 spec:
   source:
     ref:
@@ -151,7 +151,7 @@ Configure and run the source by using the following command:
 kamel bind aws-kinesis-source -p "source.region=The AWS Region" -p "source.stream=The Stream Name" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

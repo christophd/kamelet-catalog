@@ -37,7 +37,7 @@ At runtime, the `kafka-sink` Kamelet relies upon the presence of the following d
 
 - camel:core
 - camel:kafka
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -51,9 +51,9 @@ You can use the `kafka-sink` Kamelet as a Knative sink by binding it to a Knativ
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-sink-binding
+  name: kafka-sink-pipe
 spec:
   source:
     ref:
@@ -97,7 +97,7 @@ Configure and run the sink by using the following command:
 kamel bind channel:mychannel kafka-sink -p "sink.bootstrapServers=The Bootstrap Servers" -p "sink.password=The Password" -p "sink.topic=The Topic Names" -p "sink.user=The Username"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Sink
 
@@ -107,9 +107,9 @@ You can use the `kafka-sink` Kamelet as a Kafka sink by binding it to a Kafka to
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-sink-binding
+  name: kafka-sink-pipe
 spec:
   source:
     ref:
@@ -154,7 +154,7 @@ Configure and run the sink by using the following command:
 kamel bind kafka.strimzi.io/v1beta1:KafkaTopic:my-topic kafka-sink -p "sink.bootstrapServers=The Bootstrap Servers" -p "sink.password=The Password" -p "sink.topic=The Topic Names" -p "sink.user=The Username"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

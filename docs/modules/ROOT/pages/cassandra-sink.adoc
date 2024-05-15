@@ -34,7 +34,7 @@ At runtime, the `cassandra-sink` Kamelet relies upon the presence of the followi
 
 - camel:jackson
 - camel:kamelet
-- camel:cassandraql 
+- camel:cassandraql
 
 == Usage
 
@@ -48,9 +48,9 @@ You can use the `cassandra-sink` Kamelet as a Knative sink by binding it to a Kn
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: cassandra-sink-binding
+  name: cassandra-sink-pipe
 spec:
   source:
     ref:
@@ -94,7 +94,7 @@ Configure and run the sink by using the following command:
 kamel bind channel:mychannel cassandra-sink -p "sink.connectionHost=localhost" -p sink.connectionPort=9042 -p "sink.keyspace=customers" -p "sink.query=The Query"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Sink
 
@@ -104,9 +104,9 @@ You can use the `cassandra-sink` Kamelet as a Kafka sink by binding it to a Kafk
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: cassandra-sink-binding
+  name: cassandra-sink-pipe
 spec:
   source:
     ref:
@@ -151,7 +151,7 @@ Configure and run the sink by using the following command:
 kamel bind kafka.strimzi.io/v1beta1:KafkaTopic:my-topic cassandra-sink -p "sink.connectionHost=localhost" -p sink.connectionPort=9042 -p "sink.keyspace=customers" -p "sink.query=The Query"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

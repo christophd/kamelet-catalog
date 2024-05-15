@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: log-sink-binding
+  name: log-sink-pipe
 spec:
   source:
     ref:

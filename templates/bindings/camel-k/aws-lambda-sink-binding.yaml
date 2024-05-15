@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-lambda-sink-binding
+  name: aws-lambda-sink-pipe
 spec:
   source:
     ref:

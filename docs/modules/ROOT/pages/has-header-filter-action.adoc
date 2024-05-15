@@ -24,7 +24,7 @@ NOTE: Fields marked with an asterisk ({empty}*) are mandatory.
 At runtime, the `has-header-filter-action` Kamelet relies upon the presence of the following dependencies:
 
 - camel:core
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -38,9 +38,9 @@ You can use the `has-header-filter-action` Kamelet as an intermediate step in a 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: has-header-filter-action-binding
+  name: has-header-filter-action-pipe
 spec:
   source:
     ref:
@@ -92,11 +92,11 @@ Configure and run the action by using the following command:
 
 [source,shell]
 ----
-kamel bind --name has-header-filter-action-binding timer-source?message="Hello" --step insert-header-action -p "step-0.name=my-header" -p "step-0.value=my-value" --step has-header-filter-action -p "step-1.name=my-header" channel:mychannel
+kamel bind --name has-header-filter-action-pipe timer-source?message="Hello" --step insert-header-action -p "step-0.name=my-header" -p "step-0.value=my-value" --step has-header-filter-action -p "step-1.name=my-header" channel:mychannel
 
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Action
 
@@ -106,9 +106,9 @@ You can use the `has-header-filter-action` Kamelet as an intermediate step in a 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: has-header-filter-action-binding
+  name: has-header-filter-action-pipe
 spec:
   source:
     ref:
@@ -161,11 +161,11 @@ Configure and run the action by using the following command:
 
 [source,shell]
 ----
-kamel bind --name has-header-filter-action-binding timer-source?message="Hello" --step insert-header-action -p "step-0.name=my-header" -p "step-0.value=my-value" --step has-header-filter-action -p "step-1.name=my-header" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
+kamel bind --name has-header-filter-action-pipe timer-source?message="Hello" --step insert-header-action -p "step-0.name=my-header" -p "step-0.value=my-value" --step has-header-filter-action -p "step-1.name=my-header" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

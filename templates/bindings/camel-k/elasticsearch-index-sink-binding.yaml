@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: elasticsearch-index-sink-binding
+  name: elasticsearch-index-sink-pipe
 spec:
   source:
     ref:

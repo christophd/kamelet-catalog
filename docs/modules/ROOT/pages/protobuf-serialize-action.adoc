@@ -25,7 +25,7 @@ At runtime, the `protobuf-serialize-action` Kamelet relies upon the presence of 
 - mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
 - camel:kamelet
 - camel:core
-- camel:jackson-protobuf 
+- camel:jackson-protobuf
 
 == Usage
 
@@ -39,9 +39,9 @@ You can use the `protobuf-serialize-action` Kamelet as an intermediate step in a
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: protobuf-serialize-action-binding
+  name: protobuf-serialize-action-pipe
 spec:
   source:
     ref:
@@ -90,11 +90,11 @@ Configure and run the action by using the following command:
 
 [source,shell]
 ----
-kamel bind --name protobuf-serialize-action-binding timer-source?message='{"first":"John","last":"Doe"}' --step json-deserialize-action --step protobuf-serialize-action -p step-1.schema='message Person { required string first = 1; required string last = 2; }' channel:mychannel
+kamel bind --name protobuf-serialize-action-pipe timer-source?message='{"first":"John","last":"Doe"}' --step json-deserialize-action --step protobuf-serialize-action -p step-1.schema='message Person { required string first = 1; required string last = 2; }' channel:mychannel
 
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Action
 
@@ -104,9 +104,9 @@ You can use the `protobuf-serialize-action` Kamelet as an intermediate step in a
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: protobuf-serialize-action-binding
+  name: protobuf-serialize-action-pipe
 spec:
   source:
     ref:
@@ -156,11 +156,11 @@ Configure and run the action by using the following command:
 
 [source,shell]
 ----
-kamel bind --name protobuf-serialize-action-binding timer-source?message='{"first":"John","last":"Doe"}' --step json-deserialize-action --step protobuf-serialize-action -p step-1.schema='message Person { required string first = 1; required string last = 2; }' kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
+kamel bind --name protobuf-serialize-action-pipe timer-source?message='{"first":"John","last":"Doe"}' --step json-deserialize-action --step protobuf-serialize-action -p step-1.schema='message Person { required string first = 1; required string last = 2; }' kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

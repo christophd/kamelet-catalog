@@ -23,7 +23,7 @@ NOTE: Fields marked with an asterisk ({empty}*) are mandatory.
 At runtime, the `topic-name-matches-filter-action` Kamelet relies upon the presence of the following dependencies:
 
 - camel:core
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -37,9 +37,9 @@ You can use the `topic-name-matches-filter-action` Kamelet as an intermediate st
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: topic-name-matches-filter-action-binding
+  name: topic-name-matches-filter-action-pipe
 spec:
   source:
     ref:
@@ -60,7 +60,7 @@ spec:
       kind: Channel
       apiVersion: messaging.knative.dev/v1
       name: mychannel
-
+  
 ----
 
 ==== *Prerequisite*
@@ -87,7 +87,7 @@ Configure and run the action by using the following command:
 kamel bind timer-source?message=Hello --step topic-name-matches-filter-action -p "step-0.regex=The Regex" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Action
 
@@ -97,9 +97,9 @@ You can use the `topic-name-matches-filter-action` Kamelet as an intermediate st
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: topic-name-matches-filter-action-binding
+  name: topic-name-matches-filter-action-pipe
 spec:
   source:
     ref:
@@ -120,7 +120,7 @@ spec:
       kind: KafkaTopic
       apiVersion: kafka.strimzi.io/v1beta1
       name: my-topic
-
+  
 ----
 
 ==== *Prerequisites*
@@ -148,7 +148,7 @@ Configure and run the action by using the following command:
 kamel bind timer-source?message=Hello --step topic-name-matches-filter-action -p "step-0.regex=The Regex" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

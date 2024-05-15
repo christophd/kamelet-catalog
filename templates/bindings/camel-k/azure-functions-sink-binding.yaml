@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: azure-functions-sink-binding
+  name: azure-functions-sink-pipe
 spec:
   source:
     ref:

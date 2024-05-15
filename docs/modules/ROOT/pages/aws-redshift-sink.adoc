@@ -39,7 +39,7 @@ At runtime, the `aws-redshift-sink` Kamelet relies upon the presence of the foll
 - camel:kamelet
 - camel:sql
 - mvn:com.amazon.redshift:redshift-jdbc42:2.1.0.18
-- mvn:org.apache.commons:commons-dbcp2:2.10.0 
+- mvn:org.apache.commons:commons-dbcp2:2.10.0
 
 == Usage
 
@@ -53,9 +53,9 @@ You can use the `aws-redshift-sink` Kamelet as a Knative sink by binding it to a
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-redshift-sink-binding
+  name: aws-redshift-sink-pipe
 spec:
   source:
     ref:
@@ -100,7 +100,7 @@ Configure and run the sink by using the following command:
 kamel bind channel:mychannel aws-redshift-sink -p "sink.databaseName=The Database Name" -p "sink.password=The Password" -p "sink.query=INSERT INTO accounts (username,city) VALUES (:#username,:#city)" -p "sink.serverName=localhost" -p "sink.username=The Username"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Sink
 
@@ -110,9 +110,9 @@ You can use the `aws-redshift-sink` Kamelet as a Kafka sink by binding it to a K
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-redshift-sink-binding
+  name: aws-redshift-sink-pipe
 spec:
   source:
     ref:
@@ -158,7 +158,7 @@ Configure and run the sink by using the following command:
 kamel bind kafka.strimzi.io/v1beta1:KafkaTopic:my-topic aws-redshift-sink -p "sink.databaseName=The Database Name" -p "sink.password=The Password" -p "sink.query=INSERT INTO accounts (username,city) VALUES (:#username,:#city)" -p "sink.serverName=localhost" -p "sink.username=The Username"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

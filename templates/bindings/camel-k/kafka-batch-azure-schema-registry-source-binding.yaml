@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-batch-azure-schema-registry-source-binding
+  name: kafka-batch-azure-schema-registry-source-pipe
 spec:
   source:
     ref:

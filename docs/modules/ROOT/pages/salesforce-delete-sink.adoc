@@ -32,7 +32,7 @@ At runtime, the `salesforce-delete-sink` Kamelet relies upon the presence of the
 - camel:salesforce
 - camel:kamelet
 - camel:core
-- camel:jsonpath 
+- camel:jsonpath
 
 == Usage
 
@@ -46,9 +46,9 @@ You can use the `salesforce-delete-sink` Kamelet as a Knative sink by binding it
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: salesforce-delete-sink-binding
+  name: salesforce-delete-sink-pipe
 spec:
   source:
     ref:
@@ -92,7 +92,7 @@ Configure and run the sink by using the following command:
 kamel bind channel:mychannel salesforce-delete-sink -p "sink.clientId=The Consumer Key" -p "sink.clientSecret=The Consumer Secret" -p "sink.password=The Password" -p "sink.userName=The Username"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Sink
 
@@ -102,9 +102,9 @@ You can use the `salesforce-delete-sink` Kamelet as a Kafka sink by binding it t
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: salesforce-delete-sink-binding
+  name: salesforce-delete-sink-pipe
 spec:
   source:
     ref:
@@ -149,7 +149,7 @@ Configure and run the sink by using the following command:
 kamel bind kafka.strimzi.io/v1beta1:KafkaTopic:my-topic salesforce-delete-sink -p "sink.clientId=The Consumer Key" -p "sink.clientSecret=The Consumer Secret" -p "sink.password=The Password" -p "sink.userName=The Username"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

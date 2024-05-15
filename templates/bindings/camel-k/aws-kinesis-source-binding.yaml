@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-kinesis-source-binding
+  name: aws-kinesis-source-pipe
 spec:
   source:
     ref:

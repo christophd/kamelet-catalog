@@ -49,7 +49,7 @@ At runtime, the `jira-add-issue-sink` Kamelet relies upon the presence of the fo
 - camel:jackson
 - camel:jira
 - camel:kamelet
-- mvn:com.fasterxml.jackson.datatype:jackson-datatype-joda:2.12.5 
+- mvn:com.fasterxml.jackson.datatype:jackson-datatype-joda:2.12.5
 
 == Usage
 
@@ -63,9 +63,9 @@ You can use the `jira-add-issue-sink` Kamelet as a Knative sink by binding it to
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: jira-add-issue-sink-binding
+  name: jira-add-issue-sink-pipe
 spec:
   source:
     ref:
@@ -135,11 +135,11 @@ Configure and run the sink by using the following command:
 
 [source,shell]
 ----
-kamel bind --name jira-add-issue-sink-binding timer-source?message="The new comment"\&period=60000 --step insert-header-action -p step-0.name=projectKey -p step-0.value=MYP --step insert-header-action -p step-1.name=issueTypeName -p step-1.value=Bug --step insert-header-action  -p step-2.name=issueSummary -p step-2.value="This is a bug" --step insert-header-action -p step-3.name=issuePriorityName -p step-3.value=Low jira-add-issue-sink?jiraUrl="jira url"\&username="username"\&password="password"
+kamel bind --name jira-add-issue-sink-pipe timer-source?message="The new comment"\&period=60000 --step insert-header-action -p step-0.name=projectKey -p step-0.value=MYP --step insert-header-action -p step-1.name=issueTypeName -p step-1.value=Bug --step insert-header-action  -p step-2.name=issueSummary -p step-2.value="This is a bug" --step insert-header-action -p step-3.name=issuePriorityName -p step-3.value=Low jira-add-issue-sink?jiraUrl="jira url"\&username="username"\&password="password"
 
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Sink
 
@@ -149,9 +149,9 @@ You can use the `jira-add-issue-sink` Kamelet as a Kafka sink by binding it to a
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: jira-add-issue-sink-binding
+  name: jira-add-issue-sink-pipe
 spec:
   source:
     ref:
@@ -222,11 +222,11 @@ Configure and run the sink by using the following command:
 
 [source,shell]
 ----
-kamel bind --name jira-add-issue-sink-binding timer-source?message="The new comment"\&period=60000 --step insert-header-action -p step-0.name=projectKey -p step-0.value=MYP --step insert-header-action -p step-1.name=issueTypeName -p step-1.value=Bug --step insert-header-action  -p step-2.name=issueSummary -p step-2.value="This is a bug" --step insert-header-action -p step-3.name=issuePriorityName -p step-3.value=Low jira-add-issue-sink?jiraUrl="jira url"\&username="username"\&password="password"
+kamel bind --name jira-add-issue-sink-pipe timer-source?message="The new comment"\&period=60000 --step insert-header-action -p step-0.name=projectKey -p step-0.value=MYP --step insert-header-action -p step-1.name=issueTypeName -p step-1.value=Bug --step insert-header-action  -p step-2.name=issueSummary -p step-2.value="This is a bug" --step insert-header-action -p step-3.name=issuePriorityName -p step-3.value=Low jira-add-issue-sink?jiraUrl="jira url"\&username="username"\&password="password"
 
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

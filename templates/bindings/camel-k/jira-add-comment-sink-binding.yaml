@@ -1,8 +1,8 @@
-# kamel bind --name jira-add-comment-sink-binding timer-source?message="The new comment"\&period=60000 --step insert-header-action -p step-0.name=issueKey -p step-0.value=MYP-167 jira-add-comment-sink?password="password"\&username="username"\&jiraUrl="jira url"
+# kamel bind --name jira-add-comment-sink-pipe timer-source?message="The new comment"\&period=60000 --step insert-header-action -p step-0.name=issueKey -p step-0.value=MYP-167 jira-add-comment-sink?password="password"\&username="username"\&jiraUrl="jira url"
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: jira-add-comment-sink-binding
+  name: jira-add-comment-sink-pipe
 spec:
   source:
     ref:

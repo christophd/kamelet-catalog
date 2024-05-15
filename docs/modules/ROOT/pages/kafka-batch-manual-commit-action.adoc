@@ -16,7 +16,7 @@ The `kafka-batch-manual-commit-action` Kamelet does not specify any configuratio
 At runtime, the `kafka-batch-manual-commit-action` Kamelet relies upon the presence of the following dependencies:
 
 - mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -30,9 +30,9 @@ You can use the `kafka-batch-manual-commit-action` Kamelet as an intermediate st
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-batch-manual-commit-action-binding
+  name: kafka-batch-manual-commit-action-pipe
 spec:
   source:
     ref:
@@ -51,7 +51,7 @@ spec:
       kind: Channel
       apiVersion: messaging.knative.dev/v1
       name: mychannel
-
+  
 ----
 
 ==== *Prerequisite*
@@ -78,7 +78,7 @@ Configure and run the action by using the following command:
 kamel bind timer-source?message=Hello --step kafka-batch-manual-commit-action channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Action
 
@@ -88,9 +88,9 @@ You can use the `kafka-batch-manual-commit-action` Kamelet as an intermediate st
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: kafka-batch-manual-commit-action-binding
+  name: kafka-batch-manual-commit-action-pipe
 spec:
   source:
     ref:
@@ -109,7 +109,7 @@ spec:
       kind: KafkaTopic
       apiVersion: kafka.strimzi.io/v1beta1
       name: my-topic
-
+  
 ----
 
 ==== *Prerequisites*
@@ -137,7 +137,7 @@ Configure and run the action by using the following command:
 kamel bind timer-source?message=Hello --step kafka-batch-manual-commit-action kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

@@ -44,7 +44,7 @@ At runtime, the `aws-sqs-source` Kamelet relies upon the presence of the followi
 - camel:core
 - camel:aws2-sqs
 - mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -58,9 +58,9 @@ You can use the `aws-sqs-source` Kamelet as a Knative source by binding it to a 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-sqs-source-binding
+  name: aws-sqs-source-pipe
 spec:
   source:
     ref:
@@ -102,7 +102,7 @@ Configure and run the source by using the following command:
 kamel bind aws-sqs-source -p "source.queueNameOrArn=The Queue Name" -p "source.region=The AWS Region" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -112,9 +112,9 @@ You can use the `aws-sqs-source` Kamelet as a Kafka source by binding it to a Ka
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-sqs-source-binding
+  name: aws-sqs-source-pipe
 spec:
   source:
     ref:
@@ -157,7 +157,7 @@ Configure and run the source by using the following command:
 kamel bind aws-sqs-source -p "source.queueNameOrArn=The Queue Name" -p "source.region=The AWS Region" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

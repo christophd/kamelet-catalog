@@ -37,7 +37,7 @@ At runtime, the `aws-ddb-streams-source` Kamelet relies upon the presence of the
 - mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
 - camel:gson
 - camel:aws2-ddb
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -51,9 +51,9 @@ You can use the `aws-ddb-streams-source` Kamelet as a Knative source by binding 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-ddb-streams-source-binding
+  name: aws-ddb-streams-source-pipe
 spec:
   source:
     ref:
@@ -95,7 +95,7 @@ Configure and run the source by using the following command:
 kamel bind aws-ddb-streams-source -p "source.region=The AWS Region" -p "source.table=The Table" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -105,9 +105,9 @@ You can use the `aws-ddb-streams-source` Kamelet as a Kafka source by binding it
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-ddb-streams-source-binding
+  name: aws-ddb-streams-source-pipe
 spec:
   source:
     ref:
@@ -150,7 +150,7 @@ Configure and run the source by using the following command:
 kamel bind aws-ddb-streams-source -p "source.region=The AWS Region" -p "source.table=The Table" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

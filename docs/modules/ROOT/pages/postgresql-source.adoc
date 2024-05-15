@@ -33,7 +33,7 @@ At runtime, the `postgresql-source` Kamelet relies upon the presence of the foll
 - camel:kamelet
 - camel:sql
 - mvn:org.postgresql:postgresql:42.6.1
-- mvn:org.apache.commons:commons-dbcp2:2.10.0 
+- mvn:org.apache.commons:commons-dbcp2:2.10.0
 
 == Usage
 
@@ -47,9 +47,9 @@ You can use the `postgresql-source` Kamelet as a Knative source by binding it to
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: postgresql-source-binding
+  name: postgresql-source-pipe
 spec:
   source:
     ref:
@@ -94,7 +94,7 @@ Configure and run the source by using the following command:
 kamel bind postgresql-source -p "source.databaseName=The Database Name" -p "source.password=The Password" -p "source.query=INSERT INTO accounts (username,city) VALUES (:#username,:#city)" -p "source.serverName=localhost" -p "source.username=The Username" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -104,9 +104,9 @@ You can use the `postgresql-source` Kamelet as a Kafka source by binding it to a
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: postgresql-source-binding
+  name: postgresql-source-pipe
 spec:
   source:
     ref:
@@ -152,7 +152,7 @@ Configure and run the source by using the following command:
 kamel bind postgresql-source -p "source.databaseName=The Database Name" -p "source.password=The Password" -p "source.query=INSERT INTO accounts (username,city) VALUES (:#username,:#city)" -p "source.serverName=localhost" -p "source.username=The Username" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

@@ -31,7 +31,7 @@ At runtime, the `jira-source` Kamelet relies upon the presence of the following 
 - camel:jackson
 - camel:jira
 - camel:kamelet
-- mvn:com.fasterxml.jackson.datatype:jackson-datatype-joda:2.12.5 
+- mvn:com.fasterxml.jackson.datatype:jackson-datatype-joda:2.12.5
 
 == Usage
 
@@ -45,9 +45,9 @@ You can use the `jira-source` Kamelet as a Knative source by binding it to a Kna
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: jira-source-binding
+  name: jira-source-pipe
 spec:
   source:
     ref:
@@ -88,7 +88,7 @@ Configure and run the source by using the following command:
 kamel bind jira-source -p "source.jiraUrl=http://my_jira.com:8081" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -98,9 +98,9 @@ You can use the `jira-source` Kamelet as a Kafka source by binding it to a Kafka
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: jira-source-binding
+  name: jira-source-pipe
 spec:
   source:
     ref:
@@ -142,7 +142,7 @@ Configure and run the source by using the following command:
 kamel bind jira-source -p "source.jiraUrl=http://my_jira.com:8081" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

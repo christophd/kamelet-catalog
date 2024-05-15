@@ -35,7 +35,7 @@ NOTE: Fields marked with an asterisk ({empty}*) are mandatory.
 At runtime, the `log-sink` Kamelet relies upon the presence of the following dependencies:
 
 - camel:kamelet
-- camel:log 
+- camel:log
 
 == Usage
 
@@ -49,9 +49,9 @@ You can use the `log-sink` Kamelet as a Knative sink by binding it to a Knative 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: log-sink-binding
+  name: log-sink-pipe
 spec:
   source:
     ref:
@@ -90,7 +90,7 @@ Configure and run the sink by using the following command:
 kamel bind channel:mychannel log-sink
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Sink
 
@@ -100,9 +100,9 @@ You can use the `log-sink` Kamelet as a Kafka sink by binding it to a Kafka topi
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: log-sink-binding
+  name: log-sink-pipe
 spec:
   source:
     ref:
@@ -142,7 +142,7 @@ Configure and run the sink by using the following command:
 kamel bind kafka.strimzi.io/v1beta1:KafkaTopic:my-topic log-sink
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

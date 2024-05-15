@@ -6,7 +6,7 @@
 
 A Kamelet that can read events from an IBM MQ message queue using JMS.
 
-In your KameletBinding file, you must explicitly declare the IBM MQ Server driver dependency in spec->integration->dependencies
+In your Pipe file, you must explicitly declare the IBM MQ Server driver dependency in spec->integration->dependencies
 
 - "mvn:com.ibm.mq:com.ibm.mq.jakarta.client:<version>"
 
@@ -36,7 +36,7 @@ NOTE: Fields marked with an asterisk ({empty}*) are mandatory.
 At runtime, the `jms-ibm-mq-source` Kamelet relies upon the presence of the following dependencies:
 
 - camel:jms
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -50,9 +50,9 @@ You can use the `jms-ibm-mq-source` Kamelet as a Knative source by binding it to
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: jms-ibm-mq-source-binding
+  name: jms-ibm-mq-source-pipe
 spec:
   source:
     ref:
@@ -97,11 +97,11 @@ Configure and run the source by using the following command:
 
 [source,shell]
 ----
-kamel bind --name jms-ibm-mq-source-binding 'jms-ibm-mq-source?serverName=10.103.41.245&serverPort=1414&destinationType=queue&destinationName=DEV.QUEUE.1&queueManager=QM1&channel=DEV.APP.SVRCONN&username=app&password=passw0rd' channel:mychannel
+kamel bind --name jms-ibm-mq-source-pipe 'jms-ibm-mq-source?serverName=10.103.41.245&serverPort=1414&destinationType=queue&destinationName=DEV.QUEUE.1&queueManager=QM1&channel=DEV.APP.SVRCONN&username=app&password=passw0rd' channel:mychannel
 
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -111,9 +111,9 @@ You can use the `jms-ibm-mq-source` Kamelet as a Kafka source by binding it to a
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: jms-ibm-mq-source-binding
+  name: jms-ibm-mq-source-pipe
 spec:
   source:
     ref:
@@ -159,11 +159,11 @@ Configure and run the source by using the following command:
 
 [source,shell]
 ----
-kamel bind --name jms-ibm-mq-source-binding 'jms-ibm-mq-source?serverName=10.103.41.245&serverPort=1414&destinationType=queue&destinationName=DEV.QUEUE.1&queueManager=QM1&channel=DEV.APP.SVRCONN&username=app&password=passw0rd' kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
+kamel bind --name jms-ibm-mq-source-pipe 'jms-ibm-mq-source?serverName=10.103.41.245&serverPort=1414&destinationType=queue&destinationName=DEV.QUEUE.1&queueManager=QM1&channel=DEV.APP.SVRCONN&username=app&password=passw0rd' kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

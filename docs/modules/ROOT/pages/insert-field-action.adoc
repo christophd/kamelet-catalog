@@ -30,7 +30,7 @@ At runtime, the `insert-field-action` Kamelet relies upon the presence of the fo
 - mvn:org.apache.camel.kamelets:camel-kamelets-utils:2.3.0
 - camel:core
 - camel:jackson
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -44,9 +44,9 @@ You can use the `insert-field-action` Kamelet as an intermediate step in a Knati
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: insert-field-action-binding
+  name: insert-field-action-pipe
 spec:
   source:
     ref:
@@ -96,11 +96,11 @@ Configure and run the action by using the following command:
 
 [source,shell]
 ----
-kamel bind --name insert-field-action-binding timer-source?message='{"foo":"John"}' --step json-deserialize-action --step insert-field-action -p step-1.field='The Field' -p step-1.value='The Value' channel:mychannel
+kamel bind --name insert-field-action-pipe timer-source?message='{"foo":"John"}' --step json-deserialize-action --step insert-field-action -p step-1.field='The Field' -p step-1.value='The Value' channel:mychannel
 
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Action
 
@@ -110,9 +110,9 @@ You can use the `insert-field-action` Kamelet as an intermediate step in a Kafka
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: insert-field-action-binding
+  name: insert-field-action-pipe
 spec:
   source:
     ref:
@@ -163,11 +163,11 @@ Configure and run the action by using the following command:
 
 [source,shell]
 ----
-kamel bind --name insert-field-action-binding timer-source?message='{"foo":"John"}' --step json-deserialize-action --step insert-field-action -p step-1.field='The Field' -p step-1.value='The Value' kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
+kamel bind --name insert-field-action-pipe timer-source?message='{"foo":"John"}' --step json-deserialize-action --step insert-field-action -p step-1.field='The Field' -p step-1.value='The Value' kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

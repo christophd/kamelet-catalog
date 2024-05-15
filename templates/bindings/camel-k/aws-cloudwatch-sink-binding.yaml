@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: aws-cloudwatch-sink-binding
+  name: aws-cloudwatch-sink-pipe
 spec:
   source:
     ref:

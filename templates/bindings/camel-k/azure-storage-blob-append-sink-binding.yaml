@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: azure-storage-blob-append-sink-binding
+  name: azure-storage-blob-append-sink-pipe
 spec:
   source:
     ref:

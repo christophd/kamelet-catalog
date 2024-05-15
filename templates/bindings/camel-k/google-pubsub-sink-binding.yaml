@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: google-pubsub-sink-binding
+  name: google-pubsub-sink-pipe
 spec:
   source:
     ref:

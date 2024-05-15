@@ -32,7 +32,7 @@ At runtime, the `cassandra-source` Kamelet relies upon the presence of the follo
 
 - camel:jackson
 - camel:kamelet
-- camel:cassandraql 
+- camel:cassandraql
 
 == Usage
 
@@ -46,9 +46,9 @@ You can use the `cassandra-source` Kamelet as a Knative source by binding it to 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: cassandra-source-binding
+  name: cassandra-source-pipe
 spec:
   source:
     ref:
@@ -92,7 +92,7 @@ Configure and run the source by using the following command:
 kamel bind cassandra-source -p "source.connectionHost=localhost" -p source.connectionPort=9042 -p "source.keyspace=customers" -p "source.query=The Query" channel:mychannel
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Source
 
@@ -102,9 +102,9 @@ You can use the `cassandra-source` Kamelet as a Kafka source by binding it to a 
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: cassandra-source-binding
+  name: cassandra-source-pipe
 spec:
   source:
     ref:
@@ -149,7 +149,7 @@ Configure and run the source by using the following command:
 kamel bind cassandra-source -p "source.connectionHost=localhost" -p source.connectionPort=9042 -p "source.keyspace=customers" -p "source.query=The Query" kafka.strimzi.io/v1beta1:KafkaTopic:my-topic
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

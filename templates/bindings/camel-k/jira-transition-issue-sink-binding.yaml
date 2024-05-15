@@ -1,8 +1,8 @@
-# kamel bind --name jira-transition-issue-sink-binding timer-source?message="The new comment 123"\&period=60000 --step insert-header-action -p step-0.name=issueKey -p step-0.value=MYP-170 --step insert-header-action -p step-1.name=issueTransitionId -p step-1.value=5 jira-transition-issue-sink?jiraUrl="jira url"\&username="username"\&password="password"
+# kamel bind --name jira-transition-issue-sink-pipe timer-source?message="The new comment 123"\&period=60000 --step insert-header-action -p step-0.name=issueKey -p step-0.value=MYP-170 --step insert-header-action -p step-1.name=issueTransitionId -p step-1.value=5 jira-transition-issue-sink?jiraUrl="jira url"\&username="username"\&password="password"
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: jira-transition-issue-sink-binding
+  name: jira-transition-issue-sink-pipe
 spec:
   source:
     ref:

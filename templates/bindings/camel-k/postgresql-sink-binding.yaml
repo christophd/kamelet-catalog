@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: postgresql-sink-binding
+  name: postgresql-sink-pipe
 spec:
   source:
     ref:

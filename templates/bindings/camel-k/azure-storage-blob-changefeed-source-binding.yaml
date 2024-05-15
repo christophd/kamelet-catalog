@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: azure-storage-blob-changefeed-source-binding
+  name: azure-storage-blob-changefeed-source-pipe
 spec:
   source:
     ref:

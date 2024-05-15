@@ -28,7 +28,7 @@ At runtime, the `slack-sink` Kamelet relies upon the presence of the following d
 
 - camel:jackson
 - camel:slack
-- camel:kamelet 
+- camel:kamelet
 
 == Usage
 
@@ -42,9 +42,9 @@ You can use the `slack-sink` Kamelet as a Knative sink by binding it to a Knativ
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: slack-sink-binding
+  name: slack-sink-pipe
 spec:
   source:
     ref:
@@ -86,7 +86,7 @@ Configure and run the sink by using the following command:
 kamel bind channel:mychannel slack-sink -p "sink.channel=#myroom" -p "sink.webhookUrl=The Webhook URL"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 === Kafka Sink
 
@@ -96,9 +96,9 @@ You can use the `slack-sink` Kamelet as a Kafka sink by binding it to a Kafka to
 [source,yaml]
 ----
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: slack-sink-binding
+  name: slack-sink-pipe
 spec:
   source:
     ref:
@@ -141,7 +141,7 @@ Configure and run the sink by using the following command:
 kamel bind kafka.strimzi.io/v1beta1:KafkaTopic:my-topic slack-sink -p "sink.channel=#myroom" -p "sink.webhookUrl=The Webhook URL"
 ----
 
-This command creates the KameletBinding in the current namespace on the cluster.
+This command creates the Pipe in the current namespace on the cluster.
 
 == Kamelet source file
 

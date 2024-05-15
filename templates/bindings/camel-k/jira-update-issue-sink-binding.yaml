@@ -1,8 +1,8 @@
-# kamel bind --name jira-update-issue-sink-binding timer-source?message="The new comment"\&period=60000 --step insert-header-action -p step-0.name=issueKey -p step-0.value=MYP-170 --step insert-header-action -p step-1.name=issueTypeName -p step-1.value=Story --step insert-header-action  -p step-2.name=issueSummary -p step-2.value="This is a story 123" --step insert-header-action -p step-3.name=issuePriorityName -p step-3.value=Highest jira-update-issue-sink?jiraUrl="jira url"\&username="username"\&password="password"
+# kamel bind --name jira-update-issue-sink-pipe timer-source?message="The new comment"\&period=60000 --step insert-header-action -p step-0.name=issueKey -p step-0.value=MYP-170 --step insert-header-action -p step-1.name=issueTypeName -p step-1.value=Story --step insert-header-action  -p step-2.name=issueSummary -p step-2.value="This is a story 123" --step insert-header-action -p step-3.name=issuePriorityName -p step-3.value=Highest jira-update-issue-sink?jiraUrl="jira url"\&username="username"\&password="password"
 apiVersion: camel.apache.org/v1
-kind: KameletBinding
+kind: Pipe
 metadata:
-  name: jira-update-issue-sink-binding
+  name: jira-update-issue-sink-pipe
 spec:
   source:
     ref:
