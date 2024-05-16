@@ -1,13 +1,11 @@
 # Jira Kamelet test
 
-This test verifies the Jira Kamelet source defined in [jira-source.kamelet.yaml](jira-source.kamelet.yaml)
+This test verifies Jira Kamelets.
 
 ## Objectives
 
-The test verifies the Jira Kamelet by creating a Camel K integration that uses the Kamelet and listens for new 
-Jira issue objects. 
-
-In jira-source new issue event is passed to a logger-sink Kamelet by Pipe.
+The test verifies the Jira Kamelet by creating a Camel K integration that uses the Kamelet interacting with the Jira REST API. 
+The Jira API is simulated during the test with an Http server endpoint.
 
 ### Test Kamelet
 
@@ -39,6 +37,7 @@ You can review the installation steps for the operators in the documentation:
 
 ```shell script
 $ yaks run jira-source.feature
+$ yaks run jira-add-issue-sink.feature
 ```
 
 You can increase number of attempts to run the test by adding: "-e YAKS_CAMELK_MAX_ATTEMPTS=1000"

@@ -22,6 +22,10 @@ config:
     resources:
       - jira-credentials.properties
       - jira-source-pipe.yaml
+      - jira-add-issue-sink-pipe.yaml
+      - jira-create-issue-request.json
+      - jira-create-issue-response.json
+      - jira-issue-types.json
       - jira-latest-issue.json
       - jira-search-results.json
     cucumber:

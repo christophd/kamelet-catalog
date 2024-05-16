@@ -1,0 +1,16 @@
+{
+  "fields": {
+    "project": {
+      "key": "${jira.project.key}"
+    },
+    "summary": "${jira.issue.summary}",
+    "description": "${jira.issue.description}",
+    "issuetype": {
+      "id": "1"
+    },
+    "assignee": {
+      "name": "${jira.issue.assignee}"
+    }
+  },
+  "properties": []
+}

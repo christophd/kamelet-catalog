@@ -1,0 +1,5 @@
+{
+  "id": "${jira.issue.id}",
+  "key": "${jira.issue.key}",
+  "self": "yaks:resolveURL('jira-service')/rest/api/latest/issue/${jira.issue.id}"
+}

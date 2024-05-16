@@ -1,0 +1,20 @@
+[
+  {
+    "self": "yaks:resolveURL('jira-service')/rest/api/latest/issueType/1",
+    "id": "1",
+    "description": "A problem with the software.",
+    "iconUrl": "yaks:resolveURL('jira-service')/images/icons/issuetypes/bug.png",
+    "name": "Bug",
+    "subtask": false,
+    "avatarId": 2
+  },
+  {
+    "self": "yaks:resolveURL('jira-service')/rest/api/latest/issueType/3",
+    "id": "3",
+    "description": "A task that needs to be done.",
+    "iconUrl": "yaks:resolveURL('jira-service')/images/icons/issuetypes/task.png",
+    "name": "Task",
+    "subtask": false,
+    "avatarId": 1
+  }
+]
