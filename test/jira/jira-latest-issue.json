@@ -1,0 +1,15 @@
+{
+  "expand": "",
+  "startAt": 0,
+  "maxResults": 1,
+  "total": 1,
+  "issues": [
+    {
+      "expand": "",
+      "id": "${jira.issue.id}",
+      "key": "${jira.issue.key}",
+      "self": "yaks:resolveURL('jira-service')/rest/api/latest/issue/${jira.issue.id}",
+      "transitions": "yaks:resolveURL('jira-service')/rest/api/latest/issue/${jira.issue.key}/transitions"
+    }
+  ]
+}
