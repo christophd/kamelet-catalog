@@ -23,6 +23,10 @@ config:
       - jira-credentials.properties
       - jira-source-pipe.yaml
       - jira-add-issue-sink-pipe.yaml
+      - jira-add-comment-sink-pipe.yaml
+      - jira-server-info.json
+      - jira-add-comment-response.json
+      - jira-get-issue-response.json
       - jira-create-issue-request.json
       - jira-create-issue-response.json
       - jira-issue-types.json

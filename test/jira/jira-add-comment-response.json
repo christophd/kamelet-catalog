@@ -1,0 +1,23 @@
+{
+  "self": "yaks:resolveURL('jira-service')/rest/api/latest/issue/${jira.issue.id}/comment/${jira.issue.comment.id}",
+  "id": "${jira.issue.comment.id}",
+  "author": {
+    "self": "yaks:resolveURL('jira-service')/rest/api/latest/user?username=yaks",
+    "name": "yaks",
+    "displayName": "YAKS User",
+    "active": false
+  },
+  "body": "${jira.issue.comment}",
+  "updateAuthor": {
+    "self": "yaks:resolveURL('jira-service')/rest/api/latest/user?username=yaks",
+    "name": "yaks",
+    "displayName": "YAKS User",
+    "active": false
+  },
+  "created": "yaks:currentDate(yyyy-MM-dd'T'HH:mm:ss.SZ)",
+  "updated": "yaks:currentDate(yyyy-MM-dd'T'HH:mm:ss.SZ)",
+  "visibility": {
+    "type": "role",
+    "value": "Users"
+  }
+}

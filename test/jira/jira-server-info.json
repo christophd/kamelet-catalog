@@ -1,0 +1,15 @@
+{
+  "baseUrl": "yaks:resolveURL('jira-service')",
+  "version": "5.0.0",
+  "versionNumbers": [
+    5,
+    0,
+    0
+  ],
+  "buildNumber": 581,
+  "buildDate": "yaks:currentDate(yyyy-MM-dd'T'HH:mm:ss.SZ)",
+  "serverTime": "yaks:currentDate(yyyy-MM-dd'T'HH:mm:ss.SZ)",
+  "scmInfo": "yaks:randomString(40, LOWERCASE)",
+  "buildPartnerName": "YAKS Co.",
+  "serverTitle": "Test Jira Server"
+}
