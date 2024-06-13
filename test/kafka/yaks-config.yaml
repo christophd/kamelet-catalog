@@ -37,6 +37,7 @@ config:
     resources:
       - kafka-source-pipe.yaml
       - kafka-sink-pipe.yaml
+      - timestamp-router-pipe.yaml
   dump:
     enabled: true
     failedOnly: true
@@ -56,3 +57,4 @@ pre:
       kubectl apply -f ../../kafka-source.kamelet.yaml -n $YAKS_NAMESPACE
       kubectl delete kamelet kafka-sink -n $YAKS_NAMESPACE
       kubectl apply -f ../../kafka-sink.kamelet.yaml -n $YAKS_NAMESPACE
+      kubectl apply -f webhook-source.kamelet.yaml -n $YAKS_NAMESPACE
