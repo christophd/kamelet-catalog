@@ -125,7 +125,7 @@ spec:
           password: "{{password}}"
           loginUrl: "{{loginUrl}}"
     from:
-      uri: "{{local-salesforce}}:{{topicName}}"
+      uri: "{{local-salesforce}}:{{operation}}:{{topicName}}"
       parameters:
         notifyForFields: "{{notifyForFields}}"
         updateTopic: "true"
@@ -134,7 +134,6 @@ spec:
         notifyForOperationDelete: "{{notifyForOperationDelete}}"
         notifyForOperationUndelete: "{{notifyForOperationUndelete}}"
         sObjectQuery: "{{query}}"
-        operationName: "{{operation}}"
       steps:
       - marshal:
           json: {}
